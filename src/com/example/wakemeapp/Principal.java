@@ -35,13 +35,21 @@ public class Principal extends Activity {
 		return true;
 		
 	}
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 63c959b66febad17fec62742e05040a2541f1328
 	public void bucle(){
 		for(int i=0; i<100; i++)
 			System.out.println("Hola");
 	
 	}
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 63c959b66febad17fec62742e05040a2541f1328
 	public void nuevafuncion (String uno){
 		int trescomacatorce =3;
 		float casicuatro= 3;
@@ -50,7 +58,10 @@ public class Principal extends Activity {
 	public boolean esPeritosPronto (Date fecha) {
 		return (true);
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 63c959b66febad17fec62742e05040a2541f1328
 
 	public void mostrarFavoritos(){
 		NuevaAlarma a;
