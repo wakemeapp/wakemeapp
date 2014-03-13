@@ -35,5 +35,11 @@ public class Principal extends Activity {
 		
 		//cambio mariano 2
 	}
+	
+	public void nuevafuncion (String uno){
+		int trescomacatorce =3;
+		float casicuatro= 3;
+	}	
+	
 
 }
