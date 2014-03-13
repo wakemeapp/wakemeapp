@@ -1,5 +1,7 @@
 package com.example.wakemeapp;
 
+import java.sql.Date;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -34,6 +36,10 @@ public class Principal extends Activity {
 		return true;
 		
 		//cambio mariano 2
+	}
+	
+	public boolean esPeritosPronto (Date fecha) {
+		return (true);
 	}
 
 	public void mostrarFavoritos(){
