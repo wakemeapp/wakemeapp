@@ -35,19 +35,13 @@ public class Principal extends Activity {
 		return true;
 		
 	}
-	
-<<<<<<< HEAD
 
-=======
-<<<<<<< HEAD
 	public void bucle(){
 		for(int i=0; i<100; i++)
 			System.out.println("Hola");
 	
 	}
-=======
-<<<<<<< HEAD
->>>>>>> 32fd6db502906f46720fe97e9750eeb9a31ba11a
+
 	public void nuevafuncion (String uno){
 		int trescomacatorce =3;
 		float casicuatro= 3;
@@ -56,11 +50,7 @@ public class Principal extends Activity {
 	public boolean esPeritosPronto (Date fecha) {
 		return (true);
 	}
-<<<<<<< HEAD
-=======
->>>>>>> fdc15fe1e63e1377154e1dbb6dcfc5c4f3f4ea2c
->>>>>>> b511b6933066263ffaa197ef8d3536575cd85f7f
->>>>>>> 32fd6db502906f46720fe97e9750eeb9a31ba11a
+
 
 	public void mostrarFavoritos(){
 		NuevaAlarma a;
