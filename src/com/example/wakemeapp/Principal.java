@@ -10,6 +10,7 @@ import android.widget.Button;
 
 public class Principal extends Activity {
 
+	//cambio realizado por Luis
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
