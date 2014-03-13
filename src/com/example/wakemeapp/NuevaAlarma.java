@@ -22,6 +22,7 @@ public class NuevaAlarma extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 		//cambio
+		//
 	}
 
 }
