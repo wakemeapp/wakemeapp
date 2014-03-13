@@ -25,7 +25,6 @@ public class Principal extends Activity {
                   Intent intent = new Intent(Principal.this, NuevaAlarma.class);
                   startActivity(intent);
              }
-             //mañana mejor
         });
 	}
 
@@ -35,20 +34,17 @@ public class Principal extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 		
-		//cambio mariano 2
 	}
 	
-<<<<<<< HEAD
+
 	public void nuevafuncion (String uno){
 		int trescomacatorce =3;
 		float casicuatro= 3;
 	}	
-	
-=======
+
 	public boolean esPeritosPronto (Date fecha) {
 		return (true);
 	}
->>>>>>> fdc15fe1e63e1377154e1dbb6dcfc5c4f3f4ea2c
 
 	public void mostrarFavoritos(){
 		NuevaAlarma a;
