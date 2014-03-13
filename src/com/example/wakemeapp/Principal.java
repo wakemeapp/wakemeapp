@@ -1,5 +1,7 @@
 package com.example.wakemeapp;
 
+import java.sql.Date;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -36,10 +38,28 @@ public class Principal extends Activity {
 		//cambio mariano 2
 	}
 	
+<<<<<<< HEAD
 	public void bucle(){
 		for(int i=0; i<100; i++)
 			System.out.println("Hola");
 	
 	}
+=======
+<<<<<<< HEAD
+	public void nuevafuncion (String uno){
+		int trescomacatorce =3;
+		float casicuatro= 3;
+	}	
+	
+=======
+	public boolean esPeritosPronto (Date fecha) {
+		return (true);
+	}
+>>>>>>> fdc15fe1e63e1377154e1dbb6dcfc5c4f3f4ea2c
+>>>>>>> b511b6933066263ffaa197ef8d3536575cd85f7f
 
+	public void mostrarFavoritos(){
+		NuevaAlarma a;
+		a=new NuevaAlarma();
+	}
 }
