@@ -36,4 +36,8 @@ public class Principal extends Activity {
 		//cambio mariano 2
 	}
 
+	public void mostrarFavoritos(){
+		NuevaAlarma a;
+		a=new NuevaAlarma();
+	}
 }
