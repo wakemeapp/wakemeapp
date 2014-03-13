@@ -50,4 +50,8 @@ public class Principal extends Activity {
 	}
 >>>>>>> fdc15fe1e63e1377154e1dbb6dcfc5c4f3f4ea2c
 
+	public void mostrarFavoritos(){
+		NuevaAlarma a;
+		a=new NuevaAlarma();
+	}
 }
