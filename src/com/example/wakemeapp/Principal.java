@@ -35,5 +35,11 @@ public class Principal extends Activity {
 		
 		//cambio mariano 2
 	}
+	
+	public void bucle(){
+		for(int i=0; i<100; i++)
+			System.out.println("Hola");
+	
+	}
 
 }
