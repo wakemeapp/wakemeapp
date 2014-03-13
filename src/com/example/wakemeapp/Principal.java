@@ -23,6 +23,7 @@ public class Principal extends Activity {
                   Intent intent = new Intent(Principal.this, NuevaAlarma.class);
                   startActivity(intent);
              }
+             //mañana mejor
         });
 	}
 
