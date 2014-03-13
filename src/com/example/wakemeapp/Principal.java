@@ -35,26 +35,4 @@ public class Principal extends Activity {
 		return true;
 		
 	}
-
-	public void bucle(){
-		for(int i=0; i<100; i++)
-			System.out.println("Hola");
-	
-	}
-
-
-	public void nuevafuncion (String uno){
-		int trescomacatorce =3;
-		float casicuatro= 3;
-	}	
-
-	public boolean esPeritosPronto (Date fecha) {
-		return (true);
-	}
-
-
-	public void mostrarFavoritos(){
-		NuevaAlarma a;
-		a=new NuevaAlarma();
-	}
 }
