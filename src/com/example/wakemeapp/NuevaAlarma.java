@@ -7,7 +7,7 @@ import android.app.Activity;
 import android.view.Menu;
 
 public class NuevaAlarma extends Activity {
-
+//hola
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
