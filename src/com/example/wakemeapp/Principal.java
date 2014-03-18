@@ -23,6 +23,15 @@ public class Principal extends Activity {
                   startActivity(intent);
              }
         });
+        
+        Button btVerActivas = (Button)findViewById(R.id.button2);
+        btVerActivas.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(Principal.this, AlarmasActivas.class);
+                  startActivity(intent);
+             }
+        });
 	}
 
 	@Override
