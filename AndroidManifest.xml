@@ -26,6 +26,14 @@
             android:name="com.example.wakemeapp.NuevaAlarma"
             android:label="@string/app_name" >            
         </activity>
+        <activity
+            android:name="com.example.wakemeapp.Favoritos"
+            android:label="@string/app_name" >            
+        </activity>
+        <activity
+            android:name="com.example.wakemeapp.AlarmasActivas"
+            android:label="@string/app_name" >            
+        </activity>
     </application>
 
 </manifest>
