@@ -24,11 +24,20 @@ public class Principal extends Activity {
              }
         });
         
-        Button btVerActivas = (Button)findViewById(R.id.button2);
-        btVerActivas.setOnClickListener(new OnClickListener() {
+        Button btnVerActivas = (Button)findViewById(R.id.button2);
+        btnVerActivas.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
                   Intent intent = new Intent(Principal.this, AlarmasActivas.class);
+                  startActivity(intent);
+             }
+        });
+        
+        Button btnFavoritos = (Button)findViewById(R.id.button3);
+        btnFavoritos.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(Principal.this, Favoritos.class);
                   startActivity(intent);
              }
         });

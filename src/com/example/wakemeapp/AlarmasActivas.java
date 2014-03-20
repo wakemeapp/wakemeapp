@@ -18,7 +18,7 @@ public class AlarmasActivas extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alarmasactivas);
 		
-		final String[] datos = new String[]{"Elem1","Elem2","Elem3","Elem4","Elem5"};
+		final String[] datos = new String[]{"Alarma1","Alarma2","Alarma3","Alarma4","Alarma5"};
 		 
 		ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, datos);
 
