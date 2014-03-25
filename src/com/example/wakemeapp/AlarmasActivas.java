@@ -1,5 +1,9 @@
 package com.example.wakemeapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import clases.alarma;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -18,12 +22,16 @@ public class AlarmasActivas extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alarmasactivas);
 		
-		final String[] datos = new String[]{"Alarma1","Alarma2","Alarma3","Alarma4","Alarma5"};
-		 
-		ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, datos);
+		List<alarma> lstalarma = new ArrayList();
+		lstalarma.add(new alarma("Casa", 500));
+		lstalarma.add(new alarma("Colegio", 100));
+		lstalarma.add(new alarma("Universidad", 1000));
+		
+		Adaptadoritemlista adapterM = new Adaptadoritemlista(this, lstalarma);
+        ListView alarmasactivas = (ListView)findViewById(R.id.listaAlarmasActivas);	            
+        alarmasactivas.setAdapter(adapterM);
 
-		ListView lv = (ListView)findViewById(R.id.listaAlarmasActivas);
-		lv.setAdapter(adaptador);
+		
 		
 		Button btnnuevaalarma = (Button)findViewById(R.id.btAtras);
         btnnuevaalarma.setOnClickListener(new OnClickListener() {
