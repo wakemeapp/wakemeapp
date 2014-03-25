@@ -1,6 +1,6 @@
 package clases;
 
-public class alarma {
+public class Alarma {
 
 	private int id;
 	private String nombre;
@@ -12,16 +12,16 @@ public class alarma {
 	private boolean favorito;
 	private String destino;
 	
-	public alarma(){
+	public Alarma(){
 		
 	}
 	
-	public alarma(String nombre, int distancia){
+	public Alarma(String nombre, int distancia){
 		this.nombre = nombre;
 		this.distancia = distancia;		
 	}
 	
-	public alarma(int id, String nombre, String destino, int distancia, boolean favorito, boolean activa)
+	public Alarma(int id, String nombre, String destino, int distancia, boolean favorito, boolean activa)
 	{
 		this.id = id;
 		this.nombre = nombre;
