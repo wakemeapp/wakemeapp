@@ -1,5 +1,11 @@
 package com.example.wakemeapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import clases.Persistencia;
+import clases.alarma;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,12 +23,14 @@ public class Favoritos extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.favoritos);
 		
-		ListView lv = (ListView) findViewById(R.id.listView1);
 		
-		final String[] alarmas = new String[]{"Alarma 1","Alarma 2","Alarma 3","Alarma 4","Alarma 5"};
+		List<alarma> lstalarma = new ArrayList<alarma>();
+		Persistencia p = Persistencia.getPersistencia();
+		lstalarma = p.getAlarmasBD();
 		
-		ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_checked, alarmas);
-		lv.setAdapter(adaptador);
+		Adaptadoritemlista adapterM = new Adaptadoritemlista(this, lstalarma);
+        ListView favoritos = (ListView)findViewById(R.id.listView1);	            
+        favoritos.setAdapter(adapterM);
 		
 		Button btnAtras = (Button)findViewById(R.id.button1);
 		btnAtras.setOnClickListener(new OnClickListener() {

@@ -9,7 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CompoundButton;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 
 
@@ -28,14 +30,25 @@ public class Adaptadoritemlista extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View item = inflater.inflate(R.layout.itemlista, null);
- 
-        TextView lblTitulo = (TextView)item.findViewById(R.id.Lbldestino);
-        lblTitulo.setText(items.get(position).nombre);
- 
-        TextView lblSubtitulo = (TextView)item.findViewById(R.id.Lbldistancia);
+        final alarma al = items.get(position);
         
-        lblSubtitulo.setText(Integer.toString(items.get(position).distancia));
+        TextView lblnombre = (TextView)item.findViewById(R.id.lblnombre);
+        lblnombre.setText(al.nombre);
  
+        TextView lbldestino = (TextView)item.findViewById(R.id.lbldestino);
+        lbldestino.setText(al.direccion);
+ 
+        TextView lbldistancia = (TextView)item.findViewById(R.id.lbldistancia);        
+        lbldistancia.setText(Integer.toString(al.distancia));
+        
+        ToggleButton tbnactiva = (ToggleButton) item.findViewById(R.id.btnactiva);
+        tbnactiva.setChecked(al.activa);
+        
+        tbnactiva.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+		    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+		        al.activa = isChecked;		        
+		    }
+		});
         return(item);
     }
 
