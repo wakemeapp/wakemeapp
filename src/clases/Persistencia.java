@@ -6,15 +6,15 @@ import java.util.List;
 public class Persistencia {
 
 	private static Persistencia pers;
-	private List<alarma> listAlarmas;
+	private List<Alarma> listAlarmas;
 	
 	private Persistencia() {
-		alarma alarma1 = new alarma("Casa", 2);
-		alarma alarma2 = new alarma("Trabajo", 2);
-		alarma alarma3 = new alarma("Excursión 1", 4);
-		alarma alarma4 = new alarma("Universidad", 3);
+		Alarma alarma1 = new Alarma("Casa", 2);
+		Alarma alarma2 = new Alarma("Trabajo", 2);
+		Alarma alarma3 = new Alarma("Excursión 1", 4);
+		Alarma alarma4 = new Alarma("Universidad", 3);
 		
-		listAlarmas = new ArrayList<alarma>();
+		listAlarmas = new ArrayList<Alarma>();
 		listAlarmas.add(alarma1);
 		listAlarmas.add(alarma2);
 		listAlarmas.add(alarma3);
@@ -29,7 +29,7 @@ public class Persistencia {
 		return pers;
 	}
 	
-	public List<alarma> getAlarmasBD() {
+	public List<Alarma> getAlarmasBD() {
 		return listAlarmas;
 	}
 }

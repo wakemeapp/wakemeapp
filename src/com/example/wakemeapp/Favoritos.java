@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import clases.Persistencia;
-import clases.alarma;
+import clases.Alarma;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -24,7 +23,7 @@ public class Favoritos extends Activity {
 		setContentView(R.layout.favoritos);
 		
 		
-		List<alarma> lstalarma = new ArrayList<alarma>();
+		List<Alarma> lstalarma = new ArrayList<Alarma>();
 		Persistencia p = Persistencia.getPersistencia();
 		lstalarma = p.getAlarmasBD();
 		

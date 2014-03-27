@@ -3,15 +3,14 @@ package com.example.wakemeapp;
 import java.util.ArrayList;
 import java.util.List;
 
+import clases.Alarma;
 import clases.Persistencia;
-import clases.alarma;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -28,7 +27,7 @@ public class AlarmasActivas extends Activity {
 		lstalarma.add(new alarma("Colegio", 100));
 		lstalarma.add(new alarma("Universidad", 1000));*/
 		
-		List<alarma> lstalarma = new ArrayList<alarma>();
+		List<Alarma> lstalarma = new ArrayList<Alarma>();
 		Persistencia p = Persistencia.getPersistencia();
 		lstalarma = p.getAlarmasBD();
 		

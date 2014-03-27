@@ -25,11 +25,7 @@
         
 
         <TextView
-<<<<<<< HEAD
-            android:id="@+id/lblnombre"
-=======
             android:id="@+id/lblDistancia"
->>>>>>> origin/victor2
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -49,11 +45,7 @@
             android:layout_height="wrap_content" >
 
             <ToggleButton
-<<<<<<< HEAD
-                android:id="@+id/btnactiva"
-=======
                 android:id="@+id/tbnActivar"
->>>>>>> origin/victor2
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"

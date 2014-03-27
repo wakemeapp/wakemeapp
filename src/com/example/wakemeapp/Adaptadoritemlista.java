@@ -2,8 +2,7 @@ package com.example.wakemeapp;
 
 import java.util.List;
 
-import clases.alarma;
-
+import clases.Alarma;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,9 +19,9 @@ import android.widget.ToggleButton;
 public class Adaptadoritemlista extends BaseAdapter {	
 	 
     private Activity context;
-    private List<alarma> items;
+    private List<Alarma> items;
  
-    public Adaptadoritemlista(Activity context, List<alarma> items) {
+    public Adaptadoritemlista(Activity context, List<Alarma> items) {
     	this.context = context;
     	this.items = items;
     }
@@ -30,23 +29,23 @@ public class Adaptadoritemlista extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
         View item = inflater.inflate(R.layout.itemlista, null);
-        final alarma al = items.get(position);
+        final Alarma al = items.get(position);
         
         TextView lblnombre = (TextView)item.findViewById(R.id.lblnombre);
-        lblnombre.setText(al.nombre);
+        lblnombre.setText(al.getNombre());
  
         TextView lbldestino = (TextView)item.findViewById(R.id.lbldestino);
-        lbldestino.setText(al.direccion);
+        lbldestino.setText(al.getDestino());
  
         TextView lbldistancia = (TextView)item.findViewById(R.id.lbldistancia);        
-        lbldistancia.setText(Integer.toString(al.distancia));
+        lbldistancia.setText(Integer.toString(al.getDistancia()));
         
         ToggleButton tbnactiva = (ToggleButton) item.findViewById(R.id.btnactiva);
-        tbnactiva.setChecked(al.activa);
+        tbnactiva.setChecked(al.isActiva());
         
         tbnactiva.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 		    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		        al.activa = isChecked;		        
+		        al.setActiva(isChecked);		        
 		    }
 		});
         return(item);
