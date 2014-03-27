@@ -1,6 +1,10 @@
 package com.example.wakemeapp;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import clases.Alarma;
+import clases.Persistencia;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -75,6 +79,12 @@ public class NuevaAlarma extends Activity {
             	 
             	 alarma = new Alarma(id, nombre, destino, distancia, favorito, activa);
             	 
+            	 List<Alarma> lstalarma = new ArrayList<Alarma>();
+         		 Persistencia p = Persistencia.getPersistencia();
+         		 lstalarma = p.getAlarmasBD();
+         		 
+         		 lstalarma.add(alarma);
+         		 
             	 System.out.println("Mi alarma es: " + alarma.getId() + " " + alarma.getNombre() + " " + alarma.getDestino() + " " + alarma.getDistancia() + " " + alarma.isFavorito() + " " + alarma.isActiva());
                  
             	 Intent intent = new Intent(NuevaAlarma.this, Principal.class);
