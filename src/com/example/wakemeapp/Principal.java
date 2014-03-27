@@ -41,6 +41,16 @@ public class Principal extends Activity {
                   startActivity(intent);
              }
         });
+        
+        Button btnAcercaDe = (Button)findViewById(R.id.button4);
+        btnAcercaDe.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(Principal.this, AcercaDe.class);
+                  startActivity(intent);
+             }
+        });
+        
 	}
 
 	@Override

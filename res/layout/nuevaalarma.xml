@@ -11,9 +11,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:orientation="vertical" >
-
+        
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/txtDestino"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -21,11 +21,15 @@
             android:ems="20"
             android:hint="Destino" >
 
-            <requestFocus />
         </EditText>
+        
 
         <TextView
-            android:id="@+id/textView1"
+<<<<<<< HEAD
+            android:id="@+id/lblnombre"
+=======
+            android:id="@+id/lblDistancia"
+>>>>>>> origin/victor2
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -34,18 +38,22 @@
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <SeekBar
-            android:id="@+id/seekBar1"
+            android:id="@+id/skbDistancia"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" 
+            android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
             <ToggleButton
-                android:id="@+id/toggleButton1"
+<<<<<<< HEAD
+                android:id="@+id/btnactiva"
+=======
+                android:id="@+id/tbnActivar"
+>>>>>>> origin/victor2
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
@@ -55,7 +63,7 @@
                 android:textOn="Activada" />
 
             <RatingBar
-                android:id="@+id/ratingBar1"
+                android:id="@+id/rbFavoritos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="100dp"
@@ -67,7 +75,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/btAtras"
+        android:id="@+id/btnAtras"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -75,11 +83,22 @@
         android:text="Atras" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnCrear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:text="Crear" />
+
+    <EditText
+        android:id="@+id/txtNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="42dp"
+        android:ems="20"
+        android:hint="Nombre" />
 
 </RelativeLayout>
