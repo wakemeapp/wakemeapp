@@ -14,6 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RatingBar;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -32,6 +33,32 @@ public class NuevaAlarma extends Activity {
                   startActivity(intent);
              }
         });
+		
+		SeekBar skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
+		skbDistancia.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				
+				TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
+				lblNumero.setText(Integer.toString(progress));
+			}
+		});
+		
 		
 		Button btnCrear = (Button)findViewById(R.id.btnCrear);
 		btnCrear.setOnClickListener(new OnClickListener() {
