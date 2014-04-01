@@ -12,7 +12,6 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.RatingBar;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -71,7 +70,7 @@ public class NuevaAlarma extends Activity {
             	 String nombre;
             	 String destino;
             	 int distancia;
-            	 boolean favorito;
+            	 boolean favorito = false;
             	 boolean activa = true;
             	 
             	 TextView txtNombre = (TextView)findViewById(R.id.txtNombre);
@@ -83,27 +82,13 @@ public class NuevaAlarma extends Activity {
             	 SeekBar skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
             	 distancia = skbDistancia.getProgress();
 
-            	 RatingBar ratingBar = (RatingBar)findViewById(R.id.rbFavoritos);
-            	 if(ratingBar.getRating()>0)
-            	 {
-            		 favorito = true;
-            	 }
-            	 else
-            	 {
-            		 favorito = false;
-            	 }
+            	 ToggleButton tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
+            	 favorito = tbnFavoritos.isChecked();
             	 
-            	 //NO COGE ESTE CAMPO BIEN, EL RESTO FUNCIONA, ESTA ES ACTIVA O NO ACTIVA
-            	 ToggleButton toggleButton = (ToggleButton)findViewById(R.id.tbnActivar);
-            	 if(toggleButton.getTextOn().toString() != null)
-            	 {
-            		 activa = true;
-            	 }
-            	 else
-            	 {
-            		 activa = false;			 
-            	 }
             	 
+            	 ToggleButton tbnActivar = (ToggleButton)findViewById(R.id.tbnActivar);
+            	 activa = tbnActivar.isChecked();
+            	             	 
             	 alarma = new Alarma(id, nombre, destino, distancia, favorito, activa);
             	 
             	 List<Alarma> lstalarma = new ArrayList<Alarma>();

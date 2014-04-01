@@ -19,7 +19,7 @@
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
             android:ems="20"
-            android:hint="Destino" >
+            android:hint="@string/destino" >
 
         </EditText>
 
@@ -34,7 +34,7 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginRight="25dp"
                 android:layout_marginTop="10dp"
-                android:text="Distancia"
+                android:text="@string/distancia"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <TextView
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
-                android:text="distancia"
+                android:text=""
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
         </LinearLayout>
@@ -66,17 +66,17 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:text="ToggleButton"
+                android:text=""
                 android:textOff="Desactivada"
                 android:textOn="Activada" />
 
-            <RatingBar
-                android:id="@+id/rbFavoritos"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="20dp"
-                android:numStars="1" />
+            <ToggleButton
+                android:id="@+id/tbnFavoritos"
+			    android:textOn="" 
+			    android:textOff=""
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:background="@drawable/toggle_button" />            
 
         </LinearLayout>
 
@@ -88,7 +88,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="Atras" />
+        android:text="@string/atras" />
 
     <Button
         android:id="@+id/btnCrear"
@@ -96,7 +96,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Crear" />
+        android:text="@string/crear" />
 
     <EditText
         android:id="@+id/txtNombre"
@@ -107,6 +107,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="42dp"
         android:ems="20"
-        android:hint="Nombre" />
+        android:hint="@string/nombre" />
 
 </RelativeLayout>
