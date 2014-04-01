@@ -8,7 +8,9 @@
         android:layout_width="300dp"
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/nosotros" />
+        android:src="@drawable/nosotros"
+        android:contentDescription="@string/desc"
+         />
 
     <Button
         android:id="@+id/btAtras"
@@ -16,7 +18,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="Atrás" />
+        android:text="@string/atras" />
 
     <TextView
         android:id="@+id/textView1"
@@ -28,7 +30,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="35dp"
-        android:text="WakeMeApp ha sido desarrollada por Luis, Manuel y Víctor y forma parte de un proyecto desarrollado en la asignatura &apos;Informática Móvil&apos;"
+        android:text="@string/acerca"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textSize="18sp" />
 
