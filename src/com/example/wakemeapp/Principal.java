@@ -51,6 +51,33 @@ public class Principal extends Activity {
              }
         });
         
+        Button btnluis = (Button)findViewById(R.id.btnluis);
+        btnluis.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(Principal.this, Luis.class);
+                  startActivity(intent);
+             }
+        });        
+        
+        Button btnmanuel = (Button)findViewById(R.id.btnmanuel);
+        btnmanuel.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(Principal.this, Manuel.class);
+                  startActivity(intent);
+             }
+        });
+        
+        Button btnvictor = (Button)findViewById(R.id.btnvictor);
+        btnvictor.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(Principal.this, Victor.class);
+                  startActivity(intent);
+             }
+        });
+        
 	}
 
 	@Override
