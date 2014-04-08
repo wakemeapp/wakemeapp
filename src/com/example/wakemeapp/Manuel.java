@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 
-public class Manuel extends Activity{
+public class Manuel extends android.support.v4.app.FragmentActivity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
