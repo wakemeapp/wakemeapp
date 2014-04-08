@@ -2,10 +2,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/Fondo"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:background="@drawable/background">
+    android:layout_height="match_parent"
+    android:background="@drawable/background" >
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -36,7 +37,32 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Acerca de" />
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnvictor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnmanuel"
+        android:layout_alignBottom="@+id/btnmanuel"
+        android:layout_alignParentRight="true"
+        android:text="Victor" />
+
+    <Button
+        android:id="@+id/btnluis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayout1"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="92dp"
+        android:text="Luis" />
+
+    <Button
+        android:id="@+id/btnmanuel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btnluis"
+        android:layout_centerHorizontal="true"
+        android:text="Manuel" />
 
 </RelativeLayout>
