@@ -45,7 +45,9 @@ public class Adaptadoritemlista extends BaseAdapter {
         
         tbnactiva.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 		    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-		        al.setActiva(isChecked);		        
+		        al.setActiva(isChecked);
+		        
+		        
 		    }
 		});
         return(item);

@@ -44,6 +44,7 @@
 			this.longitud = longitud;
 		}
 		
+		
 		public int getId() {
 			return id;
 		}
