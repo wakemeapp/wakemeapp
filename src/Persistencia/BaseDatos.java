@@ -13,13 +13,35 @@ public class BaseDatos extends SQLiteOpenHelper {
 	}
 
 	//Sentencia SQL para crear la tabla de Usuarios
-	String sqlCreate = "CREATE TABLE Alarmas (id INTEGER, nombre TEXT, destino TEXT, distancia INTEGER, " +
-			", favorito INTEGER, activa INTEGER, direccion TEXT, latitud REAL, longitud REAL)";
+	private String sqlCreate = "CREATE TABLE Alarmas (" +
+			"id INTEGER NOT NULL PRIMARY KEY, " + //AUTOINCREMENT pruebalo con distintas instancias del objeto Alarma
+			"nombre TEXT, " +
+			"destino TEXT, " +
+			"distancia INTEGER, " +
+			"favorito INTEGER, " +
+			"activa INTEGER, " +
+			"direccion TEXT, " +
+			"latitud REAL, " +
+			"longitud REAL" +
+			");";
+	
+	private String sqlConfig = "CREATE TABLE Config (" +
+			"id INTEGER NOT NULL PRIMARY KEY, " + //AUTOINCREMENT
+			"nombre TEXT, " +
+			"destino TEXT, " +
+			"distancia INTEGER, " +
+			"favorito INTEGER, " +
+			"activa INTEGER, " +
+			"direccion TEXT, " +
+			"latitud REAL, " +
+			"longitud REAL" +
+			");";
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		//Se ejecuta la sentencia SQL de creación de la tabla
 		db.execSQL(sqlCreate);
+		db.execSQL(sqlConfig);
 	}
 
 	@Override
@@ -27,9 +49,11 @@ public class BaseDatos extends SQLiteOpenHelper {
 		
 		//Se elimina la versión anterior de la tabla
 		db.execSQL("DROP TABLE IF EXISTS Alarmas");
+		db.execSQL("DROP TABLE IF EXISTS Config");
 		
 		//Se crea la nueva versión de la tabla
 		db.execSQL(sqlCreate);
+		db.execSQL(sqlConfig);
 		
 	}
 	

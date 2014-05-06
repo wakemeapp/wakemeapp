@@ -1,11 +1,10 @@
 package com.example.wakemeapp;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import clases.Persistencia;
 import clases.Alarma;
 
+import Persistencia.BDOperaciones;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,10 +21,8 @@ public class Favoritos extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.favoritos);
 		
-		
-		List<Alarma> lstalarma = new ArrayList<Alarma>();
-		Persistencia p = Persistencia.getPersistencia();
-		lstalarma = p.getAlarmasBD();
+		BDOperaciones bd = new BDOperaciones();
+		List<Alarma> lstalarma = bd.getAlarmasFavoritas(this);
 		
 		Adaptadoritemlista adapterM = new Adaptadoritemlista(this, lstalarma);
         ListView favoritos = (ListView)findViewById(R.id.listView1);	            
