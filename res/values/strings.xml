@@ -6,7 +6,7 @@
     <string name="hello_world">Hello world!</string>
 	<string name="atras">Atrás</string>
 	<!--  <string name="acerca">WakeMeApp ha sido desarrollada por Luis, Manuel y Víctor y forma parte de un proyecto desarrollado en la asignatura &apos;Informática Móvil&apos;</string>-->
-	<string name="acerca">WakeMeApp ha sido desarrollada por Luis, Manuel y Víctor y forma parte de un proyecto desarrollado en la asignatura Informática Móvil</string>
+	<string name="acerca">WakeMeApp ha sido desarrollada por Luis, Manuel, Mariano y Víctor y forma parte de un proyecto desarrollado en la asignatura Informática Móvil</string>
 	<string name="desc">WakeMeApp Team</string>
 	<string name="crear">Crear</string>
 	<string name="nombre">Nombre</string>

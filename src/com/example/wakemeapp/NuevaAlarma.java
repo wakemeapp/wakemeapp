@@ -1,10 +1,7 @@
 package com.example.wakemeapp;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import clases.Alarma;
-import clases.Persistencia;
+import Persistencia.BDOperaciones;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -24,7 +21,7 @@ public class NuevaAlarma extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nuevaalarma);
 		
-		Button btnAtras = (Button)findViewById(R.id.btnAtras);
+   	 	Button btnAtras = (Button)findViewById(R.id.btnAtras);
 		btnAtras.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
@@ -66,7 +63,7 @@ public class NuevaAlarma extends Activity {
             	 
             	 Alarma alarma;
             	 
-            	 int id = 1; //OJO -->HE DADO ID 1 A TODOS, esto habrá que cambiarlo
+            	 int id = 0; //OJO -->HE DADO ID 0 A TODOS, esto habrá que cambiarlo
             	 String nombre;
             	 String destino;
             	 int distancia;
@@ -91,13 +88,10 @@ public class NuevaAlarma extends Activity {
             	             	 
             	 alarma = new Alarma(id, nombre, destino, distancia, favorito, activa);
             	 
-            	 List<Alarma> lstalarma = new ArrayList<Alarma>();
-         		 Persistencia p = Persistencia.getPersistencia();
-         		 lstalarma = p.getAlarmasBD();
-         		 
-         		 lstalarma.add(alarma);
-         		 
-            	 System.out.println("Mi alarma es: " + alarma.getId() + " " + alarma.getNombre() + " " + alarma.getDestino() + " " + alarma.getDistancia() + " " + alarma.isFavorito() + " " + alarma.isActiva());
+            	 BDOperaciones bd = new BDOperaciones();
+            	 bd.insertarAlarma(NuevaAlarma.this.getApplicationContext(), alarma);
+            	 
+            	 //System.out.println("Mi alarma es: " + alarma.getId() + " " + alarma.getNombre() + " " + alarma.getDestino() + " " + alarma.getDistancia() + " " + alarma.isFavorito() + " " + alarma.isActiva());
                  
             	 Intent intent = new Intent(NuevaAlarma.this, Principal.class);
                  startActivity(intent);

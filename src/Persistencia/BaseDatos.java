@@ -1,47 +1,60 @@
 package Persistencia;
 
-import com.example.wakemeapp.R;
-
-import android.app.Activity;
+import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Bundle;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.database.sqlite.SQLiteOpenHelper;
 
-public class BaseDatos extends Activity {
+
+public class BaseDatos extends SQLiteOpenHelper {
+	
+	public BaseDatos(Context context, String name, CursorFactory factory, int version) {
+		super(context, name, factory, version);
+	}
+
+	//Sentencia SQL para crear la tabla de Usuarios
+	private String sqlCreate = "CREATE TABLE Alarmas (" +
+			"id INTEGER NOT NULL PRIMARY KEY, " + //AUTOINCREMENT pruebalo con distintas instancias del objeto Alarma
+			"nombre TEXT, " +
+			"destino TEXT, " +
+			"distancia INTEGER, " +
+			"favorito INTEGER, " +
+			"activa INTEGER, " +
+			"direccion TEXT, " +
+			"latitud REAL, " +
+			"longitud REAL" +
+			");";
+	
+	private String sqlConfig = "CREATE TABLE Config (" +
+			"id INTEGER NOT NULL PRIMARY KEY, " + //AUTOINCREMENT
+			"nombre TEXT, " +
+			"destino TEXT, " +
+			"distancia INTEGER, " +
+			"favorito INTEGER, " +
+			"activa INTEGER, " +
+			"direccion TEXT, " +
+			"latitud REAL, " +
+			"longitud REAL" +
+			");";
 	
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
-		setContentView(R.layout.victor);
-		
-		// Abrimos la base de datos ‘DBUsuarios’ en modo escritura
-		Sqlite usdbh = new Sqlite(this, "BDAlarmas", null, 1);
-		SQLiteDatabase db = usdbh.getWritableDatabase();
-		
-		// Si hemos abierto correctamente la base de datos
-		if (db != null) {
-			
-			// Insertamos 5 usuarios de ejemplo
-			for (int i = 1; i <= 5; i++) {
-				// Generamos los datos
-				int id = i;
-				String nombre = "Alarma" + i;
-				String destino = "Destino" + i;
-				int distancia = i * 100;
-				int favorito = 1;
-				int activa = 1;
-				String direccion= "Direccion" + i;
-				float latitud = 30 / (float) i;
-				float longitud = 35 / (float) i;
-				
-				// Insertamos los datos en la tabla Usuarios
-				db.execSQL("INSERT INTO Alarmas (id, nombre, destino, distancia, favorito," +
-						"activa, direccion, latitud, longitud) " + 
-						"VALUES (" + id + ", '" + nombre + "','" + destino + "'" +
-								"," + distancia +","+ favorito + "," + activa + ",'"+direccion+"',"+latitud+","+ longitud +")");
-			}
-			// Cerramos la base de datos
-			db.close();
-		}
+	public void onCreate(SQLiteDatabase db) {
+		//Se ejecuta la sentencia SQL de creación de la tabla
+		db.execSQL(sqlCreate);
+		db.execSQL(sqlConfig);
 	}
+
+	@Override
+	public void onUpgrade(SQLiteDatabase db, int versionAnterior, int versionNueva) {
+		
+		//Se elimina la versión anterior de la tabla
+		db.execSQL("DROP TABLE IF EXISTS Alarmas");
+		db.execSQL("DROP TABLE IF EXISTS Config");
+		
+		//Se crea la nueva versión de la tabla
+		db.execSQL(sqlCreate);
+		db.execSQL(sqlConfig);
+		
+	}
+	
 }

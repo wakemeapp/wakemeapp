@@ -31,6 +31,19 @@
 			this.activa = activa; 
 		}
 	
+		public Alarma(int id, String nombre, String destino, int distancia, boolean favorito, boolean activa, String direccion, float latitud, float longitud)
+		{
+			this.id = id;
+			this.nombre = nombre;
+			this.destino = destino;
+			this.distancia = distancia;
+			this.favorito = favorito;
+			this.activa = activa;
+			this.direccion = direccion;
+			this.latitud = latitud;
+			this.longitud = longitud;
+		}
+		
 		public int getId() {
 			return id;
 		}

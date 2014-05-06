@@ -1,10 +1,10 @@
 package com.example.wakemeapp;
 
-import java.util.ArrayList;
+
 import java.util.List;
 
 import clases.Alarma;
-import clases.Persistencia;
+import Persistencia.BDOperaciones;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -22,20 +22,12 @@ public class AlarmasActivas extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.alarmasactivas);
 		
-		/*List<alarma> lstalarma = new ArrayList();
-		lstalarma.add(new alarma("Casa", 500));
-		lstalarma.add(new alarma("Colegio", 100));
-		lstalarma.add(new alarma("Universidad", 1000));*/
-		
-		List<Alarma> lstalarma = new ArrayList<Alarma>();
-		Persistencia p = Persistencia.getPersistencia();
-		lstalarma = p.getAlarmasBD();
+		BDOperaciones bd = new BDOperaciones();
+		List<Alarma> lstalarma = bd.getAlarmasActivas(this);
 		
 		Adaptadoritemlista adapterM = new Adaptadoritemlista(this, lstalarma);
         ListView alarmasactivas = (ListView)findViewById(R.id.listaAlarmasActivas);	            
         alarmasactivas.setAdapter(adapterM);
-
-		
 		
 		Button btnnuevaalarma = (Button)findViewById(R.id.btAtras);
         btnnuevaalarma.setOnClickListener(new OnClickListener() {
