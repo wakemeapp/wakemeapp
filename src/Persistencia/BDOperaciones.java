@@ -222,7 +222,30 @@ public class BDOperaciones {
 		if (db != null) {
 	
 				// Generamos los datos
-				int id = alarma.getId();
+				int id;
+				
+				// Si no te pasan nada en el campo ID (por defecto valdría 0), creo un ID yo
+				// sino intento introducir el ID que me pasan
+				// si el ID no se puede introducir, saltará una excepción, la cual está controlada
+				// en esta misma función
+				if(alarma.getId() == 0)
+				{
+					//Si no hay registros en la tabla poner 0 y si los
+					//hay coger el último y añadirle +1 a su ID para poner el siguiente ID.
+					if(getNumeroAlarmas(c)==0)
+					{
+						id=0;
+					}
+					else
+					{
+						id=getNumeroAlarmas(c) + 1;
+					}
+				}
+				else
+				{
+					id=alarma.getId();
+				}
+				
 				String nombre = alarma.getNombre();
 				String destino = alarma.getDestino();
 				int distancia = alarma.getDistancia();

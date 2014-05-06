@@ -63,7 +63,7 @@ public class NuevaAlarma extends Activity {
             	 
             	 Alarma alarma;
             	 
-            	 int id = 1; //OJO -->HE DADO ID 1 A TODOS, esto habrá que cambiarlo
+            	 int id = 0; //OJO -->HE DADO ID 0 A TODOS, esto habrá que cambiarlo
             	 String nombre;
             	 String destino;
             	 int distancia;
@@ -88,8 +88,8 @@ public class NuevaAlarma extends Activity {
             	             	 
             	 alarma = new Alarma(id, nombre, destino, distancia, favorito, activa);
             	 
-            	 //BDOperaciones bd = new BDOperaciones();
-            	 //bd.insertarAlarma(this, alarma);
+            	 BDOperaciones bd = new BDOperaciones();
+            	 bd.insertarAlarma(NuevaAlarma.this.getApplicationContext(), alarma);
             	 
             	 //System.out.println("Mi alarma es: " + alarma.getId() + " " + alarma.getNombre() + " " + alarma.getDestino() + " " + alarma.getDistancia() + " " + alarma.isFavorito() + " " + alarma.isActiva());
                  
