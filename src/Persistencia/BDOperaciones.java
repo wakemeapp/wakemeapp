@@ -209,6 +209,44 @@ public class BDOperaciones {
 		
 	}
 	
+	//Devuelve el último ID de la última fila de la tabla alarmas
+	public int getIdUltimaAlarma(Context c)
+	{	
+		int id=-1;
+		
+		// Abrimos la base de datos ‘BDAlarmas’ en modo lectura
+		BaseDatos usdbh = new BaseDatos(c, "BDAlarmas", null, 1);
+		SQLiteDatabase db = usdbh.getReadableDatabase();
+
+		// Si hemos abierto correctamente la base de datos
+		if (db != null) {
+				
+				// Contamos el número de alarmas (filas) que existen
+				Cursor cursor = db.rawQuery("SELECT MAX(id) FROM Alarmas", null);
+				
+				//Nos aseguramos de que existe al menos un registro
+				if (cursor.moveToFirst()) {
+					id = cursor.getInt(0);
+				}
+				else
+				{
+					id=0;
+					System.out.println("La consulta no ha devuelto registros");
+				}
+				
+			// Cerramos la base de datos
+			db.close();
+
+		}
+		else
+		{
+			System.out.println("Error al abrir la base de datos");
+		}
+		
+		return id;
+		
+	}
+	
 	//Introduce la alarma pasada como parámetro en la tabla Alarmas
 	public boolean insertarAlarma(Context c, Alarma alarma)
 	{
@@ -222,30 +260,32 @@ public class BDOperaciones {
 		if (db != null) {
 	
 				// Generamos los datos
-				int id;
 				
+
 				// Si no te pasan nada en el campo ID (por defecto valdría 0), creo un ID yo
 				// sino intento introducir el ID que me pasan
 				// si el ID no se puede introducir, saltará una excepción, la cual está controlada
 				// en esta misma función
-				if(alarma.getId() == 0)
-				{
-					//Si no hay registros en la tabla poner 0 y si los
-					//hay coger el último y añadirle +1 a su ID para poner el siguiente ID.
-					if(getNumeroAlarmas(c)==0)
-					{
-						id=0;
-					}
-					else
-					{
-						id=getNumeroAlarmas(c) + 1;
-					}
-				}
-				else
-				{
-					id=alarma.getId();
-				}
+//				if(alarma.getId() == 0 || alarma.getId() == -1)
+//				{
+//					//Si no hay registros en la tabla poner 0 y si los
+//					//hay coger el último y añadirle +1 a su ID para poner el siguiente ID.
+//					if(getIdUltimaAlarma(c)==0 || getIdUltimaAlarma(c)==-1)
+//					{
+//						id=0;
+//					}
+//					else
+//					{
+//						id=getIdUltimaAlarma(c) + 1;
+//					}
+//				}
+//				else
+//				{
+//					id=alarma.getId();
+//				}
 				
+				
+			    int id = getIdUltimaAlarma(c) + 1;
 				String nombre = alarma.getNombre();
 				String destino = alarma.getDestino();
 				int distancia = alarma.getDistancia();
