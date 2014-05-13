@@ -65,4 +65,12 @@
         android:layout_centerHorizontal="true"
         android:text="Manuel" />
 
+    <ImageButton
+        android:id="@+id/btnconfig"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ajustes" />
+
 </RelativeLayout>

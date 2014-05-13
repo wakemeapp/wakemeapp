@@ -78,6 +78,15 @@ public class Principal extends Activity {
              }
         });
         
+        Button btnconfig = (Button)findViewById(R.id.btnconfig);
+        btnconfig.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(Principal.this, ConfiguracionDefecto.class);
+                  startActivity(intent);
+             }
+        });
+        
 	}
 
 	@Override
