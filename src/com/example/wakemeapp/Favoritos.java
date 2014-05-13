@@ -36,6 +36,7 @@ public class Favoritos extends Activity {
                   startActivity(intent);
              }
         });
+		
 	}
 
 	@Override
