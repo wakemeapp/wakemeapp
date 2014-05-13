@@ -30,9 +30,18 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
-        <meta-data 
+        <!-- MANUEL <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
-			android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/>
+			android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/>-->
+        
+        <!-- VICTOR --><meta-data 
+            android:name="com.google.android.maps.v2.API_KEY"
+			android:value="AIzaSyD8JYdJLRCmG2fsFGCyMS27mXXyeWVFO-M"/>
+        
+        <!-- LUIS <meta-data 
+            android:name="com.google.android.maps.v2.API_KEY"
+			android:value="AIzaSyDNFqGzynTHxPv697BuO54_o4zlItkz8u8"/>-->
+        
         
         <meta-data
             android:name="com.google.android.gms.version"
