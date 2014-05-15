@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 public class Principal extends Activity {
 
@@ -78,7 +79,7 @@ public class Principal extends Activity {
              }
         });
         
-        Button btnconfig = (Button)findViewById(R.id.btnconfig);
+        ImageButton btnconfig = (ImageButton)findViewById(R.id.btnconfig);
         btnconfig.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {

@@ -1,5 +1,10 @@
 package com.example.wakemeapp;
 
+import java.util.List;
+
+import clases.Alarma;
+import clases.Comprobar;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -11,8 +16,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import Persistencia.BDOperaciones;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
@@ -67,6 +75,18 @@ public class Manuel extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manuel);
         setUpMapIfNeeded();
+        /***********/
+        
+       
+    	
+    		
+    		runnable.run();
+    	
+        
+        
+        
+        /************/
+        //Comprobar c = new Comprobar();
     }
 
     @Override
@@ -134,4 +154,33 @@ public class Manuel extends FragmentActivity
 	    toast.show();	
 		
 	}
+    
+    private Handler handler = new Handler();
+	private Runnable runnable = new Runnable() 
+	{
+
+	    public void run() 
+	    {
+	    	//codigo que se ejecutara periodicamente
+	    	//INICIO
+	    	System.out.println("HOLA");
+
+	    	Context c = getApplicationContext();
+	    	
+	    	
+	    	BDOperaciones bdo = new BDOperaciones();
+	    	List<Alarma> lalarma = bdo.getAlarmasActivas(c);
+	    	for(Alarma a : lalarma){
+	    		System.out.println("---" + a.getNombre());
+	    	}
+	    	
+	    	
+	    	
+	    	//FIN
+	    	
+	    	
+	    	
+	        handler.postDelayed(this, 5000);
+	    }
+	};
 }
