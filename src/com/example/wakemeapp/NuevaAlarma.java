@@ -1,9 +1,17 @@
 package com.example.wakemeapp;
 
+
+
 import clases.Alarma;
 import Persistencia.BDOperaciones;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -93,8 +101,25 @@ public class NuevaAlarma extends Activity {
             	 
             	 //System.out.println("Mi alarma es: " + alarma.getId() + " " + alarma.getNombre() + " " + alarma.getDestino() + " " + alarma.getDistancia() + " " + alarma.isFavorito() + " " + alarma.isActiva());
                  
+            	 Notificaciones notif=new Notificaciones();
+            	 
+            	 Notification.Builder builder = new Notification.Builder(NuevaAlarma.this.getApplicationContext())
+					.setSmallIcon(R.drawable.ic_launcher)
+					.setWhen(System.currentTimeMillis())
+					.setContentInfo("no. 10" )
+					.setContentText("Lorem ipsum dolor sit amet, consectetur adipiscing elit.");
+				//	.setLargeIcon(mRandomizer.getRandomImage());
+            	 
+            	 builder.setContentTitle("Maximun priority notification");
+					//.setPriority(Notification.PRIORITY_MAX);
+            	 	Uri alarmSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+            	 	builder.setSound(alarmSound);
+            	 
+            	 notif.sendNotification(builder.getNotification());
+            	 	
             	 Intent intent = new Intent(NuevaAlarma.this, Principal.class);
-                 startActivity(intent);
+
+            	 startActivity(intent);
              }
         });
 	}

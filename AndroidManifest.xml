@@ -5,34 +5,40 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
-     <permission
-			android:name="com.example.wakemeapp.permission.MAPS_RECEIVE"
-			android:protectionLevel="signature"/>
-	<uses-permission android:name="com.example.wakemeapp.permission.MAPS_RECEIVE"/>
-	<uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"/>
-	<uses-permission android:name="android.permission.INTERNET"/>
-	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-	<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
-		
+    <permission
+        android:name="com.example.wakemeapp.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.example.wakemeapp.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/icono_100x100_v1"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
-        <meta-data 
+        <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
-			android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/>
-        
-        <!--  <meta-data
+            android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk" />
+
+        <!--
+              <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />-->
-       
-        
+            android:value="@integer/google_play_services_version" />
+        -->
+
         <activity
             android:name="com.example.wakemeapp.Principal"
             android:label="@string/app_name" >
@@ -44,31 +50,35 @@
         </activity>
         <activity
             android:name="com.example.wakemeapp.NuevaAlarma"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.wakemeapp.Favoritos"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.wakemeapp.AlarmasActivas"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.wakemeapp.AcercaDe"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.wakemeapp.Luis"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.wakemeapp.Manuel"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.example.wakemeapp.Victor"
-            android:label="@string/app_name" >            
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="com.example.wakemeapp.Notificaciones"
+            android:label="@string/title_activity_notificaciones" >
         </activity>
     </application>
 

@@ -86,4 +86,5 @@ public class Principal extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
 }
