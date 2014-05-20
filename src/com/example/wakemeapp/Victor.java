@@ -58,14 +58,14 @@ public class Victor extends Activity{
 		//System.out.println("Esta ID 32 ?: " + bd.estaID(this, 32));
 		//System.out.println("Esta ID 1 ?: " + bd.estaID(this, 1));
 		
-		/*
+		
 		Alarma alarma = new Alarma();
 		
 		float aux= 3;
 		//alarma.setId(22);
-		alarma.setNombre("Paco");
+		alarma.setNombre("Nueva Alarma");
 		alarma.setDistancia(3200);
-		alarma.setDestino("PATAGONIA");
+		alarma.setCancion("Mi Canción");
 		alarma.setFavorito(true);
 		alarma.setActiva(true);
 		alarma.setDireccion("PERICO LOS PALOTES");
@@ -73,9 +73,9 @@ public class Victor extends Activity{
 		alarma.setLongitud(aux);
 		
 		bd.insertarAlarma(this, alarma); 
-		*/
 		
-		ConfiguracionDefecto cd = new ConfiguracionDefecto();
+		
+		//ConfiguracionDefecto cd = new ConfiguracionDefecto();
 		
 	}
 

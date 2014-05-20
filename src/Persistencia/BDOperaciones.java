@@ -261,7 +261,7 @@ public class BDOperaciones {
 	
 				// Generamos los datos
 				
-			    int id = getIdUltimaAlarma(c) + 1;
+			    int id = getIdUltimaAlarma(c) + 1; 
 				String nombre = alarma.getNombre();
 				String cancion = alarma.getCancion();
 				int distancia = alarma.getDistancia();
@@ -280,6 +280,7 @@ public class BDOperaciones {
 					
 				}catch(SQLException e)
 				{
+					System.out.println("ID=" + id);
 					System.out.println("Error al insertar, puede que el ID ya exista en la Base de Datos");
 					resultado=false;
 				}
@@ -291,6 +292,7 @@ public class BDOperaciones {
 		{
 			System.out.println("Error al abrir la base de datos");
 		}
+		
 		
 		return resultado;
 	}

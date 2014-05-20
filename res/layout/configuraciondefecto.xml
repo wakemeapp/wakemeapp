@@ -50,12 +50,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <Spinner
-                android:id="@+id/spRepetirCada"
+            <EditText
+                android:id="@+id/txtCancion"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Canción" />
         </LinearLayout>
     </LinearLayout>
 
@@ -86,13 +87,24 @@
         android:ems="20"
         android:hint="@string/ubicacion" />
 
+    <Spinner
+        android:id="@+id/spRepetirCada"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginTop="19dp"
+        android:layout_weight="1"
+        android:entries="@array/repetirCada"
+        android:prompt="@string/tituloRepetirAlarma" />
+
     <ToggleButton
         android:id="@+id/tbnFavoritos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="14dp"
-        android:layout_toLeftOf="@+id/btnCrear"
+        android:layout_below="@+id/spRepetirCada"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
         android:background="@drawable/toggle_button" />
 
 </RelativeLayout>

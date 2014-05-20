@@ -42,11 +42,12 @@ public class ConfiguracionDefecto extends Activity{
 	        setContentView(R.layout.configuraciondefecto);
 	        
 	        array_spinner=new String[5];
-	        array_spinner[0]="minuto";
-	        array_spinner[1]="3 minutos";
-	        array_spinner[2]="5 minutos";
-	        array_spinner[3]="10 minutos";
-	        array_spinner[4]="15 minutos";
+	        array_spinner[0]="Cada Minuto";
+	        array_spinner[1]="Cada 3 Minutos";
+	        array_spinner[2]="Cada 5 Minutos";
+	        array_spinner[3]="Cada 10 Minutos";
+	        array_spinner[4]="Cada 15 Minutos";
+	        
 	        Spinner s = (Spinner) findViewById(R.id.spRepetirCada);
 	        ArrayAdapter adapter = new ArrayAdapter(this,
 	        android.R.layout.simple_spinner_item, array_spinner);

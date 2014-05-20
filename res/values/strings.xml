@@ -13,6 +13,13 @@
 	<string name="distancia">Distancia</string>
 	<string name="destino">Destino</string>
 	
-	
+    <string name="tituloRepetirAlarma">Repetir Alarma</string>
+    <string-array name="repetirCada">
+        <item>Cada Minuto</item>
+        <item>Cada 3 Minutos</item>
+        <item>Cada 5 Minutos</item>
+        <item>Cada 10 Minutos</item>
+        <item>Cada 15 Minutos</item>
+    </string-array>
 	
 </resources>
