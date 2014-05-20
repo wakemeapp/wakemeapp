@@ -3,12 +3,16 @@ package com.example.wakemeapp;
 import java.util.List;
 
 import clases.Alarma;
+import Persistencia.BDOperaciones;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.BaseAdapter;
 import android.widget.CompoundButton;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -16,19 +20,19 @@ import android.widget.ToggleButton;
 
 
 
-public class Adaptadoritemlista extends BaseAdapter {	
+public class Adaptadoritemfavoritos extends BaseAdapter {	
 	 
     private Activity context;
     private List<Alarma> items;
  
-    public Adaptadoritemlista(Activity context, List<Alarma> items) {
+    public Adaptadoritemfavoritos(Activity context, List<Alarma> items) {
     	this.context = context;
     	this.items = items;
     }
  
     public View getView(int position, View convertView, ViewGroup parent) {
         LayoutInflater inflater = context.getLayoutInflater();
-        View item = inflater.inflate(R.layout.itemlista, null);
+        final View item = inflater.inflate(R.layout.itemfavoritos, null);
         final Alarma al = items.get(position);
         
         TextView lblnombre = (TextView)item.findViewById(R.id.lblnombre);
@@ -46,10 +50,21 @@ public class Adaptadoritemlista extends BaseAdapter {
         tbnactiva.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 		    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		        al.setActiva(isChecked);
-		        
+		        BDOperaciones bdo = new BDOperaciones();
+		    	bdo.modificarActiva(item.getContext(), al.getId(), isChecked);
 		        
 		    }
 		});
+        
+        ImageButton btnbasura = (ImageButton)item.findViewById(R.id.btnbasura);
+        btnbasura.setOnClickListener(new OnClickListener() {
+             public void onClick(View v) {
+            	 BDOperaciones bdo = new BDOperaciones();
+ 		    	 bdo.modificarFavorito(item.getContext(), al.getId(), false);
+                 Intent intent = new Intent(item.getContext(), Favoritos.class);
+                 item.getContext().startActivity(intent);
+             }
+        });
         return(item);
     }
 

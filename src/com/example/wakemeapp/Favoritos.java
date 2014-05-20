@@ -24,7 +24,7 @@ public class Favoritos extends Activity {
 		BDOperaciones bd = new BDOperaciones();
 		List<Alarma> lstalarma = bd.getAlarmasFavoritas(this);
 		
-		Adaptadoritemlista adapterM = new Adaptadoritemlista(this, lstalarma);
+		Adaptadoritemfavoritos adapterM = new Adaptadoritemfavoritos(this, lstalarma);
         ListView favoritos = (ListView)findViewById(R.id.listView1);	            
         favoritos.setAdapter(adapterM);
 		

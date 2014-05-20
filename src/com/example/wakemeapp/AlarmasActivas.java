@@ -25,7 +25,7 @@ public class AlarmasActivas extends Activity {
 		BDOperaciones bd = new BDOperaciones();
 		List<Alarma> lstalarma = bd.getAlarmasActivas(this);
 		
-		Adaptadoritemlista adapterM = new Adaptadoritemlista(this, lstalarma);
+		Adaptadoritemactiva adapterM = new Adaptadoritemactiva(this, lstalarma);
         ListView alarmasactivas = (ListView)findViewById(R.id.listaAlarmasActivas);	            
         alarmasactivas.setAdapter(adapterM);
 		
