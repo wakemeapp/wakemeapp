@@ -17,10 +17,10 @@
          android:orientation="vertical" >
 
          <TextView
-             android:id="@+id/lbldestino"
+             android:id="@+id/lblcancion"
              android:layout_width="100dp"
              android:layout_height="wrap_content"
-             android:text="destino"
+             android:text="canción"
              android:textSize="20px"
              android:textStyle="bold" />
 

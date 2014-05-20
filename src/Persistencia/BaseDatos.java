@@ -16,7 +16,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 	private String sqlCreate = "CREATE TABLE Alarmas (" +
 			"id INTEGER NOT NULL PRIMARY KEY, " + //AUTOINCREMENT pruebalo con distintas instancias del objeto Alarma
 			"nombre TEXT, " +
-			"destino TEXT, " +
+			"cancion TEXT, " +
 			"distancia INTEGER, " +
 			"favorito INTEGER, " +
 			"activa INTEGER, " +
@@ -28,7 +28,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 	private String sqlConfig = "CREATE TABLE Config (" +
 			"id INTEGER NOT NULL PRIMARY KEY, " + //AUTOINCREMENT
 			"nombre TEXT, " +
-			"destino TEXT, " +
+			"cancion TEXT, " +
 			"distancia INTEGER, " +
 			"favorito INTEGER, " +
 			"activa INTEGER, " +

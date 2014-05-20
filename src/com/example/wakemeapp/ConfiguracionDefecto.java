@@ -6,7 +6,9 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 
 public class ConfiguracionDefecto extends Activity{
 	
@@ -30,5 +32,25 @@ public class ConfiguracionDefecto extends Activity{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	public class SpinnerExample extends Activity {
+	    private String array_spinner[];
+	    @Override
+	    public void onCreate(Bundle savedInstanceState) {
+	        super.onCreate(savedInstanceState);
+	        setContentView(R.layout.configuraciondefecto);
+	        
+	        array_spinner=new String[5];
+	        array_spinner[0]="minuto";
+	        array_spinner[1]="3 minutos";
+	        array_spinner[2]="5 minutos";
+	        array_spinner[3]="10 minutos";
+	        array_spinner[4]="15 minutos";
+	        Spinner s = (Spinner) findViewById(R.id.spRepetirCada);
+	        ArrayAdapter adapter = new ArrayAdapter(this,
+	        android.R.layout.simple_spinner_item, array_spinner);
+	        s.setAdapter(adapter);
+	    }
 	}
 }

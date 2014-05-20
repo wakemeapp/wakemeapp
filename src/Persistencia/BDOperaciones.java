@@ -261,33 +261,9 @@ public class BDOperaciones {
 	
 				// Generamos los datos
 				
-
-				// Si no te pasan nada en el campo ID (por defecto valdría 0), creo un ID yo
-				// sino intento introducir el ID que me pasan
-				// si el ID no se puede introducir, saltará una excepción, la cual está controlada
-				// en esta misma función
-//				if(alarma.getId() == 0 || alarma.getId() == -1)
-//				{
-//					//Si no hay registros en la tabla poner 0 y si los
-//					//hay coger el último y añadirle +1 a su ID para poner el siguiente ID.
-//					if(getIdUltimaAlarma(c)==0 || getIdUltimaAlarma(c)==-1)
-//					{
-//						id=0;
-//					}
-//					else
-//					{
-//						id=getIdUltimaAlarma(c) + 1;
-//					}
-//				}
-//				else
-//				{
-//					id=alarma.getId();
-//				}
-				
-				
 			    int id = getIdUltimaAlarma(c) + 1;
 				String nombre = alarma.getNombre();
-				String destino = alarma.getDestino();
+				String cancion = alarma.getCancion();
 				int distancia = alarma.getDistancia();
 				int favorito = (alarma.isFavorito()) ? 1 : 0;
 				int activa = (alarma.isActiva()) ? 1 : 0;
@@ -298,8 +274,8 @@ public class BDOperaciones {
 				try{
 				    // Insertamos los datos en la tabla Alarmas
 					db.execSQL("INSERT INTO Alarmas " +
-							"(id, nombre, destino, distancia, favorito, activa, direccion, latitud, longitud) " + 
-							"VALUES (" + id + ", '" + nombre + "','" + destino + "'" +
+							"(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud) " + 
+							"VALUES (" + id + ", '" + nombre + "','" + cancion + "'" +
 									"," + distancia +","+ favorito + "," + activa + ",'"+direccion+"',"+latitud+","+ longitud +")");
 					
 				}catch(SQLException e)
@@ -334,7 +310,7 @@ public class BDOperaciones {
 				// Generamos los datos
 				int id = alarma.getId();
 				String nombre = alarma.getNombre();
-				String destino = alarma.getDestino();
+				String cancion = alarma.getCancion();
 				int distancia = alarma.getDistancia();
 				int favorito = (alarma.isFavorito()) ? 1 : 0;
 				int activa = (alarma.isActiva()) ? 1 : 0;
@@ -345,8 +321,8 @@ public class BDOperaciones {
 				try{
 				    // Insertamos los datos en la tabla Alarmas
 					db.execSQL("INSERT INTO Config " +
-							"(id, nombre, destino, distancia, favorito, activa, direccion, latitud, longitud) " + 
-							"VALUES (" + id + ", '" + nombre + "','" + destino + "'" +
+							"(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud) " + 
+							"VALUES (" + id + ", '" + nombre + "','" + cancion + "'" +
 									"," + distancia +","+ favorito + "," + activa + ",'"+direccion+"',"+latitud+","+ longitud +")");
 					
 				}catch(SQLException e)
@@ -477,7 +453,7 @@ public class BDOperaciones {
 			// Generamos los datos
 			int id = alarma.getId();
 			String nombre = alarma.getNombre();
-			String destino = alarma.getDestino();
+			String cancion = alarma.getCancion();
 			int distancia = alarma.getDistancia();
 			int favorito = (alarma.isFavorito()) ? 1 : 0;
 			int activa = (alarma.isActiva()) ? 1 : 0;
@@ -489,7 +465,7 @@ public class BDOperaciones {
 			// Modificamos los datos con el id que te pasan por los nuevos datos
 			// contenidos en la clase Alarma que te pasan
 			db.execSQL("UPDATE Alarmas " +
-					   "SET id=" + id + ", nombre='" + nombre + "', destino='" + destino + "'" +
+					   "SET id=" + id + ", nombre='" + nombre + "', cancion='" + cancion + "'" +
 							", distancia=" + distancia +", favorito="+ favorito + ", activa=" + activa +
 							", direccion='" + direccion +"', latitud= "+latitud+", longitud="+ longitud +
 					   " WHERE id=" + idparametro );
@@ -519,7 +495,7 @@ public class BDOperaciones {
 			// Generamos los datos
 			int id = alarma.getId();
 			String nombre = alarma.getNombre();
-			String destino = alarma.getDestino();
+			String cancion = alarma.getCancion();
 			int distancia = alarma.getDistancia();
 			int favorito = (alarma.isFavorito()) ? 1 : 0;
 			int activa = (alarma.isActiva()) ? 1 : 0;
@@ -531,7 +507,7 @@ public class BDOperaciones {
 			// Modificamos los datos con el id que te pasan por los nuevos datos
 			// contenidos en la clase Alarma que te pasan
 			db.execSQL("UPDATE Config " +
-					   "SET id=" + id + ", nombre='" + nombre + "', destino='" + destino + "'" +
+					   "SET id=" + id + ", nombre='" + nombre + "', cancion='" + cancion + "'" +
 							", distancia=" + distancia +", favorito="+ favorito + ", activa=" + activa +
 							", direccion='" + direccion +"', latitud= "+latitud+", longitud="+ longitud +
 					   " WHERE id=" + idparametro );
@@ -623,7 +599,7 @@ public class BDOperaciones {
 					
 					int id;
 					String nombre; 
-					String destino; 
+					String cancion; 
 					int distancia; 
 					boolean favorito; 
 					boolean activa;
@@ -635,7 +611,7 @@ public class BDOperaciones {
 					do {
 						id = cursor.getInt(0);
 						nombre = cursor.getString(1);
-						destino = cursor.getString(2);
+						cancion = cursor.getString(2);
 						distancia = cursor.getInt(3);
 						favorito = (cursor.getInt(4)==1) ? true : false;
 						activa = (cursor.getInt(5)==1) ? true : false;
@@ -644,7 +620,7 @@ public class BDOperaciones {
 						longitud = cursor.getFloat(8);
 						
 						//Creo una alarma con los datos obtenidos de la consulta
-						Alarma alarma = new Alarma(id, nombre, destino, distancia, favorito, activa, direccion, latitud, longitud);
+						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud);
 						
 						//Añado la alarma creada a la lista
 						listaActivas.add(alarma);	
@@ -690,7 +666,7 @@ public class BDOperaciones {
 					
 					int id;
 					String nombre; 
-					String destino; 
+					String cancion; 
 					int distancia; 
 					boolean favorito; 
 					boolean activa;
@@ -702,7 +678,7 @@ public class BDOperaciones {
 					do {
 						id = cursor.getInt(0);
 						nombre = cursor.getString(1);
-						destino = cursor.getString(2);
+						cancion = cursor.getString(2);
 						distancia = cursor.getInt(3);
 						favorito = (cursor.getInt(4)==1) ? true : false;
 						activa = (cursor.getInt(5)==1) ? true : false;
@@ -711,7 +687,7 @@ public class BDOperaciones {
 						longitud = cursor.getFloat(8);
 						
 						//Creo una alarma con los datos obtenidos de la consulta
-						Alarma alarma = new Alarma(id, nombre, destino, distancia, favorito, activa, direccion, latitud, longitud);
+						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud);
 						
 						//Añado la alarma creada a la lista
 						listaFavoritas.add(alarma);	
@@ -757,7 +733,7 @@ public class BDOperaciones {
 					
 					int id;
 					String nombre; 
-					String destino; 
+					String cancion; 
 					int distancia; 
 					boolean favorito; 
 					boolean activa;
@@ -769,7 +745,7 @@ public class BDOperaciones {
 					do {
 						id = cursor.getInt(0);
 						nombre = cursor.getString(1);
-						destino = cursor.getString(2);
+						cancion = cursor.getString(2);
 						distancia = cursor.getInt(3);
 						favorito = (cursor.getInt(4)==1) ? true : false;
 						activa = (cursor.getInt(5)==1) ? true : false;
@@ -778,7 +754,7 @@ public class BDOperaciones {
 						longitud = cursor.getFloat(8);
 						
 						//Creo una alarma con los datos obtenidos de la consulta
-						Alarma alarma = new Alarma(id, nombre, destino, distancia, favorito, activa, direccion, latitud, longitud);
+						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud);
 						
 						//Añado la alarma creada a la lista
 						listaPredeterminadas.add(alarma);	

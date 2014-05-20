@@ -34,8 +34,8 @@ public class Adaptadoritemlista extends BaseAdapter {
         TextView lblnombre = (TextView)item.findViewById(R.id.lblnombre);
         lblnombre.setText(al.getNombre());
  
-        TextView lbldestino = (TextView)item.findViewById(R.id.lbldestino);
-        lbldestino.setText(al.getDestino());
+        TextView lblcancion = (TextView)item.findViewById(R.id.lblcancion);
+        lblcancion.setText(al.getCancion());
  
         TextView lbldistancia = (TextView)item.findViewById(R.id.lbldistancia);        
         lbldistancia.setText(Integer.toString(al.getDistancia()));

@@ -58,7 +58,7 @@ public class Victor extends Activity{
 		//System.out.println("Esta ID 32 ?: " + bd.estaID(this, 32));
 		//System.out.println("Esta ID 1 ?: " + bd.estaID(this, 1));
 		
-		
+		/*
 		Alarma alarma = new Alarma();
 		
 		float aux= 3;
@@ -73,6 +73,9 @@ public class Victor extends Activity{
 		alarma.setLongitud(aux);
 		
 		bd.insertarAlarma(this, alarma); 
+		*/
+		
+		ConfiguracionDefecto cd = new ConfiguracionDefecto();
 		
 	}
 

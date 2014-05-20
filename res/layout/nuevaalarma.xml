@@ -13,7 +13,7 @@
         android:orientation="vertical" >
         
         <EditText
-            android:id="@+id/txtDestino"
+            android:id="@+id/txtRepetir"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
@@ -99,7 +99,7 @@
         android:text="@string/crear" />
 
     <EditText
-        android:id="@+id/txtNombre"
+        android:id="@+id/txtUbicacion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -107,6 +107,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="42dp"
         android:ems="20"
-        android:hint="@string/nombre" />
+        android:hint="@string/ubicacion" />
 
 </RelativeLayout>

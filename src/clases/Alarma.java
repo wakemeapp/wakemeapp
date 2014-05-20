@@ -10,7 +10,7 @@
 		private float latitud;
 		private float longitud;
 		private boolean favorito;
-		private String destino;
+		private String cancion;
 		
 		public Alarma(){
 			
@@ -21,21 +21,21 @@
 			this.distancia = distancia;		
 		}
 		
-		public Alarma(int id, String nombre, String destino, int distancia, boolean favorito, boolean activa)
+		public Alarma(int id, String nombre, String cancion, int distancia, boolean favorito, boolean activa)
 		{
 			this.id = id;
 			this.nombre = nombre;
-			this.destino = destino;
+			this.cancion = cancion;
 			this.distancia = distancia;
 			this.favorito = favorito;
 			this.activa = activa; 
 		}
 	
-		public Alarma(int id, String nombre, String destino, int distancia, boolean favorito, boolean activa, String direccion, float latitud, float longitud)
+		public Alarma(int id, String nombre, String cancion, int distancia, boolean favorito, boolean activa, String direccion, float latitud, float longitud)
 		{
 			this.id = id;
 			this.nombre = nombre;
-			this.destino = destino;
+			this.cancion = cancion;
 			this.distancia = distancia;
 			this.favorito = favorito;
 			this.activa = activa;
@@ -109,11 +109,11 @@
 			this.favorito = favorito;
 		}
 	
-		public String getDestino() {
-			return destino;
+		public String getCancion() {
+			return cancion;
 		}
 	
-		public void setDestino(String destino) {
-			this.destino = destino;
+		public void setCancion(String cancion) {
+			this.cancion = cancion;
 		}
 	}

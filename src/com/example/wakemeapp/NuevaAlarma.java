@@ -65,16 +65,16 @@ public class NuevaAlarma extends Activity {
             	 
             	 int id = 0; //OJO -->HE DADO ID 0 A TODOS, esto habrá que cambiarlo
             	 String nombre;
-            	 String destino;
+            	 String cancion;
             	 int distancia;
             	 boolean favorito = false;
             	 boolean activa = true;
             	 
-            	 TextView txtNombre = (TextView)findViewById(R.id.txtNombre);
+            	 TextView txtNombre = (TextView)findViewById(R.id.txtUbicacion);
             	 nombre = txtNombre.getText().toString(); 
             	 
-            	 TextView txtDestino = (TextView)findViewById(R.id.txtDestino);
-            	 destino = txtDestino.getText().toString(); 
+            	 TextView txtCancion = (TextView)findViewById(R.id.txtRepetir);
+            	 cancion = txtCancion.getText().toString(); 
             	 
             	 SeekBar skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
             	 distancia = skbDistancia.getProgress();
@@ -86,12 +86,12 @@ public class NuevaAlarma extends Activity {
             	 ToggleButton tbnActivar = (ToggleButton)findViewById(R.id.tbnActivar);
             	 activa = tbnActivar.isChecked();
             	             	 
-            	 alarma = new Alarma(id, nombre, destino, distancia, favorito, activa);
+            	 alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa);
             	 
             	 BDOperaciones bd = new BDOperaciones();
             	 bd.insertarAlarma(NuevaAlarma.this.getApplicationContext(), alarma);
             	 
-            	 //System.out.println("Mi alarma es: " + alarma.getId() + " " + alarma.getNombre() + " " + alarma.getDestino() + " " + alarma.getDistancia() + " " + alarma.isFavorito() + " " + alarma.isActiva());
+            	 //System.out.println("Mi alarma es: " + alarma.getId() + " " + alarma.getNombre() + " " + alarma.getCancion() + " " + alarma.getDistancia() + " " + alarma.isFavorito() + " " + alarma.isActiva());
                  
             	 Intent intent = new Intent(NuevaAlarma.this, Principal.class);
                  startActivity(intent);
