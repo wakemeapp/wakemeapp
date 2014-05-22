@@ -60,7 +60,16 @@ public class Adaptadoritemfavoritos extends BaseAdapter {
         btnbasura.setOnClickListener(new OnClickListener() {
              public void onClick(View v) {
             	 BDOperaciones bdo = new BDOperaciones();
- 		    	 bdo.modificarFavorito(item.getContext(), al.getId(), false);
+            	 
+            	 if(al.isActiva())
+            	 {
+            		 bdo.modificarFavorito(item.getContext(), al.getId(), false);
+            	 }
+            	 else
+            	 {
+            		 bdo.eliminarAlarma(item.getContext(), al.getId());
+            	 }
+ 		    	 
                  Intent intent = new Intent(item.getContext(), Favoritos.class);
                  item.getContext().startActivity(intent);
              }

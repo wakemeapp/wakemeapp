@@ -32,16 +32,21 @@ public class BaseDatos extends SQLiteOpenHelper {
 			"distancia INTEGER, " +
 			"favorito INTEGER, " +
 			"activa INTEGER, " +
-			"direccion TEXT, " +
 			"latitud REAL, " +
 			"longitud REAL" +
 			");";
+	
+	private String sqlInsertarDefecto = "INSERT INTO Config " +
+			"(id, nombre, cancion, distancia, favorito, activa, latitud, longitud) " + 
+			"VALUES (0, '','', 50 ,0 , 1, 40.416615, -3.703827)";
+	
 	
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		//Se ejecuta la sentencia SQL de creación de la tabla
 		db.execSQL(sqlCreate);
 		db.execSQL(sqlConfig);
+		db.execSQL(sqlInsertarDefecto);
 	}
 
 	@Override

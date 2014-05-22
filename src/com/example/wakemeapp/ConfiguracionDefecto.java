@@ -1,5 +1,9 @@
 package com.example.wakemeapp;
 
+import java.util.List;
+
+import clases.Alarma;
+import Persistencia.BDOperaciones;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,15 +13,23 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class ConfiguracionDefecto extends Activity{
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.acercade);
+		setContentView(R.layout.configuraciondefecto);
+
+		BDOperaciones bd = new BDOperaciones();
+		List<Alarma> listaPredeterminadas = bd.getAlarmasPredeterminadas(this);
 		
-		Button btnAtras = (Button)findViewById(R.id.btAtras);
+		TextView txtUbicacion = (TextView)findViewById(R.id.txtUbicacion);
+		
+		txtUbicacion.setText("Hola");
+		
+		Button btnAtras = (Button)findViewById(R.id.btnAtras);
 		btnAtras.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
