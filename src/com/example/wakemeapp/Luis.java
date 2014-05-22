@@ -3,12 +3,15 @@ package com.example.wakemeapp;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.location.LocationProvider;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,8 +46,10 @@ public class Luis extends Activity{
          		//System.out.println(provider0.getName() + ": " + provider0.getAccuracy() + " " + provider0.supportsAltitude() + " " + provider0.getPowerRequirement());
          		//System.out.println(provider1.getName() + ": " + provider1.getAccuracy() + " " + provider1.supportsAltitude() + " " + provider1.getPowerRequirement());
          		
+         		
          		if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
          			System.out.println("El servicio de GPS está desactivado, desea activarlo ahora?");
+         			showSettingsAlert(Luis.this);
          		} else {
          			System.out.println("Su servicio está habilitado, enhorabuena!");
          		}
@@ -113,5 +118,36 @@ public class Luis extends Activity{
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	public void showSettingsAlert(final Activity act){
+	    AlertDialog.Builder alertDialog = new AlertDialog.Builder(act);
+
+	    // Setting Dialog Title
+	    alertDialog.setTitle("GPS is settings");
+
+	    // Setting Dialog Message
+	    alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
+
+	    // Setting Icon to Dialog
+	    //alertDialog.setIcon(R.drawable.delete);
+
+	    // On pressing Settings button
+	    alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog,int which) {
+	            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+	            act.startActivity(intent);
+	        }
+	    });
+
+	    // on pressing cancel button
+	    alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) {
+	        	dialog.cancel();
+	        }
+	    });
+
+	    // Showing Alert Message
+	    alertDialog.create().show();
 	}
 }
