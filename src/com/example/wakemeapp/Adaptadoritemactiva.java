@@ -49,7 +49,15 @@ public class Adaptadoritemactiva extends BaseAdapter {
 		    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 		        al.setActiva(isChecked);
 		        BDOperaciones bdo = new BDOperaciones();
-		    	bdo.modificarActiva(item.getContext(), al.getId(), isChecked);
+		        if(al.isFavorito())
+		        {
+		        	bdo.modificarActiva(item.getContext(), al.getId(), isChecked);
+		        }
+		        else
+		        {
+		        	bdo.eliminarAlarma(item.getContext(), al.getId());
+		        }
+		    	
 		    	Intent intent = new Intent(item.getContext(), AlarmasActivas.class);
                 item.getContext().startActivity(intent);
 		    }

@@ -316,7 +316,7 @@ public class BDOperaciones {
 				int distancia = alarma.getDistancia();
 				int favorito = (alarma.isFavorito()) ? 1 : 0;
 				int activa = (alarma.isActiva()) ? 1 : 0;
-				String direccion= alarma.getDireccion();
+				//String direccion= alarma.getDireccion();
 				float latitud = alarma.getLatitud();
 				float longitud = alarma.getLongitud();
 				
@@ -325,7 +325,7 @@ public class BDOperaciones {
 					db.execSQL("INSERT INTO Config " +
 							"(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud) " + 
 							"VALUES (" + id + ", '" + nombre + "','" + cancion + "'" +
-									"," + distancia +","+ favorito + "," + activa + ",'"+direccion+"',"+latitud+","+ longitud +")");
+									"," + distancia +","+ favorito + "," + activa + ","+latitud+","+ longitud +")");
 					
 				}catch(SQLException e)
 				{
@@ -501,7 +501,7 @@ public class BDOperaciones {
 			int distancia = alarma.getDistancia();
 			int favorito = (alarma.isFavorito()) ? 1 : 0;
 			int activa = (alarma.isActiva()) ? 1 : 0;
-			String direccion= alarma.getDireccion();
+			//String direccion= alarma.getDireccion();
 			float latitud = alarma.getLatitud();
 			float longitud = alarma.getLongitud();
 			
@@ -511,7 +511,7 @@ public class BDOperaciones {
 			db.execSQL("UPDATE Config " +
 					   "SET id=" + id + ", nombre='" + nombre + "', cancion='" + cancion + "'" +
 							", distancia=" + distancia +", favorito="+ favorito + ", activa=" + activa +
-							", direccion='" + direccion +"', latitud= "+latitud+", longitud="+ longitud +
+							", latitud= "+latitud+", longitud="+ longitud +
 					   " WHERE id=" + idparametro );
 			
 			// Cerramos la base de datos
@@ -751,9 +751,10 @@ public class BDOperaciones {
 						distancia = cursor.getInt(3);
 						favorito = (cursor.getInt(4)==1) ? true : false;
 						activa = (cursor.getInt(5)==1) ? true : false;
-						direccion= cursor.getString(6);
-						latitud = cursor.getFloat(7);
-						longitud = cursor.getFloat(8);
+						//direccion= cursor.getString(6);
+						direccion = "";  //ASIGNO DIRECCIÓN VACÍA PORQUE NO ESTARÁ EN LA TABLA CONFIG
+						latitud = cursor.getFloat(6);
+						longitud = cursor.getFloat(7);
 						
 						//Creo una alarma con los datos obtenidos de la consulta
 						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud);

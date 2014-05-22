@@ -92,10 +92,10 @@
             android:name="com.example.wakemeapp.Victor"
             android:label="@string/app_name" >            
         </activity>
-		<!--<activity
+		<activity
             android:name="com.example.wakemeapp.ConfiguracionDefecto"
             android:label="@string/app_name" >            
-        </activity>-->
+        </activity>
     </application>
 
 </manifest>
