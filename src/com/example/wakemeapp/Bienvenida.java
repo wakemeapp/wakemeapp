@@ -9,6 +9,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Location;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -106,4 +107,23 @@ public class Bienvenida extends Activity {
 	        handler.postDelayed(this, 5000);
 	    }
 	};
+	
+	
+	private double distancia(Alarma al, Location lo){
+		double R     = 6378.137;                          //Radio de la tierra en km
+		double dLat  = rad( al.getLatitud() - lo.getLatitude());
+		double dLong = rad( al.getLongitud() - lo.getLongitude());
+		
+		double a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(rad(lo.getLatitude())) * Math.cos(rad(al.getLatitud())) * Math.sin(dLong/2) * Math.sin(dLong/2);
+		double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+		double d = R * c;
+		
+		return d;
+	}
+	
+	private double rad(double x){
+		return (x*Math.PI/180);
+	}
+	
+	
 }
