@@ -6,12 +6,17 @@ import clases.Alarma;
 import Persistencia.BDOperaciones;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -30,6 +35,8 @@ public class Bienvenida extends Activity {
     private Location coordenadas;
     private LocationManager locManager;
 	private LocationListener locListener;
+	private NotificationManager nm;  
+	private static final int ID_NOTIFICACION_CREAR = 1;
 	
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +114,31 @@ public class Bienvenida extends Activity {
 		    		double distancia = distancia(a, coordenadas);
 		    		if(distancia < a.getDistancia()) {
 		    			System.out.println("Está llegando a su destino. ¡¡Vaya cogiendo sus cosas!!");
-		    			//Notificar al usuario la proximidad al destino
+		    			//Notificar al usuario la proximidad al destino7
+		    			
+		    		/*	Notification notificacion = new Notification(
+	                             R.drawable.icono,
+	                             a.getNombre(),
+	                             System.currentTimeMillis() );
+	           
+		    				Uri cancion=Uri.parse(a.getCancion());
+		    				
+		    					notificacion.sound = cancion;
+		    			
+		    			
+		    					Context conte= Bienvenida.this.getApplicationContext();
+		    	            	 
+		    	            	 Intent i=new Intent();
+		    	            	 PendingIntent pi =PendingIntent.getActivity(Bienvenida.this.getApplicationContext(), 0, i, 0);
+		    	            	 
+		    	            	 
+		    	            	 RingtoneManager.setActualDefaultRingtoneUri(c,RingtoneManager.TYPE_RINGTONE,cancion);
+		    	            	 
+		    	            	 notificacion.setLatestEventInfo(Bienvenida.this.getApplicationContext(),"WakeMeApp", a.getDistancia() + " hasta " +a.getNombre(),pi);
+		    	          		 nm.notify(ID_NOTIFICACION_CREAR, notificacion);
+
+		    	          		startActivity(i);*/
+		    			
 		    		}
 		    	}
 	    	}
