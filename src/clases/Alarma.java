@@ -2,7 +2,7 @@
 	
 	public class Alarma {
 	
-		private int id;
+		private int id=0;
 		private String nombre;
 		private int distancia;
 		private boolean activa;

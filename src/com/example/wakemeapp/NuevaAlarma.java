@@ -19,21 +19,47 @@ import android.widget.ToggleButton;
 public class NuevaAlarma extends Activity {
 
 	private Alarma alarma = new Alarma();
+	
+	private TextView txtNombre;
+	private TextView txtCancion;
+	private SeekBar skbDistancia;
+	private ToggleButton tbnFavoritos;
+	private ToggleButton tbnActivar;
+	private TextView lblNumero;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nuevaalarma);
 		
-   	 	Button btnAtras = (Button)findViewById(R.id.btnAtras);
-		btnAtras.setOnClickListener(new OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                  Intent intent = new Intent(NuevaAlarma.this, Principal.class);
-                  startActivity(intent);
-             }
-        });
+		Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+           String s = extras.getString("Alarma");
+           alarma = new Gson().fromJson(s, Alarma.class);
+        }
+        else{
+        	BDOperaciones bd = new BDOperaciones();
+       	 	alarma = bd.getAlarmasPredeterminadas(getApplicationContext()).get(0);
+        }
 		
-		SeekBar skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
+         txtNombre = (TextView)findViewById(R.id.txtUbicacion);
+	   	 txtNombre.setText(alarma.getNombre()); 
+	   	 
+	   	 txtCancion = (TextView)findViewById(R.id.txtRepetir);
+	   	 txtCancion.setText(alarma.getCancion());
+	   	 
+	   	 skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
+	   	 skbDistancia.setProgress(alarma.getDistancia());
+	
+	   	 tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
+	   	 tbnFavoritos.setChecked(alarma.isFavorito());
+	   	 
+	   	 tbnActivar = (ToggleButton)findViewById(R.id.tbnActivar);
+	   	 tbnActivar.setChecked(alarma.isActiva());
+	   	 
+	   	 lblNumero = (TextView)findViewById(R.id.lblNumero);
+   	 	 lblNumero.setText(String.valueOf(alarma.getDistancia()));
+		
 		skbDistancia.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			
 			@Override
@@ -59,36 +85,20 @@ public class NuevaAlarma extends Activity {
 			}
 		});
 		
+		Button btnAtras = (Button)findViewById(R.id.btnAtras);
+		btnAtras.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(NuevaAlarma.this, Principal.class);
+                  startActivity(intent);
+             }
+        });
 		
 		Button btnCrear = (Button)findViewById(R.id.btnCrear);
 		btnCrear.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {    
-            	 
-            	 int id = 0; //OJO -->HE DADO ID 0 A TODOS, esto habrá que cambiarlo
-            	 String nombre;
-            	 String cancion;
-            	 int distancia;
-            	 boolean favorito = false;
-            	 boolean activa = true;
-            	 
-            	 TextView txtNombre = (TextView)findViewById(R.id.txtUbicacion);
-            	 nombre = txtNombre.getText().toString(); 
-            	 
-            	 TextView txtCancion = (TextView)findViewById(R.id.txtRepetir);
-            	 cancion = txtCancion.getText().toString(); 
-            	 
-            	 SeekBar skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
-            	 distancia = skbDistancia.getProgress();
-
-            	 ToggleButton tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
-            	 favorito = tbnFavoritos.isChecked();
-            	 
-            	 
-            	 ToggleButton tbnActivar = (ToggleButton)findViewById(R.id.tbnActivar);
-            	 activa = tbnActivar.isChecked();
-            	             	 
-            	 alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa);
+            	 getparametros();
             	 
             	 BDOperaciones bd = new BDOperaciones();
             	 bd.insertarAlarma(NuevaAlarma.this.getApplicationContext(), alarma);
@@ -104,9 +114,11 @@ public class NuevaAlarma extends Activity {
 		btnmapa.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-                  Intent intent = new Intent(NuevaAlarma.this, Manuel.class);                  
-                  intent.putExtra("Alarma", new Gson().toJson(alarma));                  
-                  startActivity(intent);
+            	 getparametros();
+            	 
+            	 Intent intent = new Intent(NuevaAlarma.this, Manuel.class);                  
+                 intent.putExtra("Alarma", new Gson().toJson(alarma));                  
+                 startActivity(intent);
              }
         });
 	}
@@ -117,5 +129,15 @@ public class NuevaAlarma extends Activity {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	private void getparametros(){		
+		alarma.setNombre(txtNombre.getText().toString()); 
+	   	alarma.setCancion(txtCancion.getText().toString()); 
+	   	alarma.setDistancia(skbDistancia.getProgress());
+	   	alarma.setFavorito(tbnFavoritos.isChecked());
+	   	alarma.setActiva(tbnActivar.isChecked());
+	}
+	
+	
 
 }

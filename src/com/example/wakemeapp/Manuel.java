@@ -19,10 +19,14 @@ import com.google.gson.Gson;
 
 import Persistencia.BDOperaciones;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Toast;
 
 
@@ -31,8 +35,8 @@ import android.widget.Toast;
  */
 public class Manuel extends FragmentActivity 
 		implements OnMapClickListener, OnMarkerDragListener {
-    private static final LatLng MADRID = new LatLng(40.416615, -3.703827);
-    private double DEFAULT_RADIUS = 1000000;
+    private LatLng ubicacion = new LatLng(40.416615, -3.703827);
+    private double distancia = 1000;
     
     private GoogleMap mMap;
 
@@ -44,6 +48,8 @@ public class Manuel extends FragmentActivity
     
     private int mStrokeColor;
     private int mFillColor;
+    
+    private Alarma alarma = new Alarma();
 
     private class DraggableCircle {
         private final Marker centerMarker;
@@ -76,33 +82,41 @@ public class Manuel extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manuel);
         
-        String s="";
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
-           s = extras.getString("Alarma");
+           String s = extras.getString("Alarma");
+           alarma = new Gson().fromJson(s, Alarma.class);
+           distancia=alarma.getDistancia();
+           ubicacion= new LatLng(alarma.getLatitud(),alarma.getLongitud());
         }
-        Alarma alarma = new Gson().fromJson(s, Alarma.class);
-        DEFAULT_RADIUS=alarma.getDistancia();
-        
-        
         
         setUpMapIfNeeded();
         
+        Button btnAtras = (Button)findViewById(R.id.btnAtras);
+		btnAtras.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(Manuel.this, NuevaAlarma.class);
+                  intent.putExtra("Alarma", new Gson().toJson(alarma));
+                  startActivity(intent);
+             }
+        });
+		
+		Button btnAlarma = (Button)findViewById(R.id.btnAlarma);
+		btnAlarma.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+            	 alarma.setLatitud((float)dc.centerMarker.getPosition().latitude);
+            	 alarma.setLongitud((float)dc.centerMarker.getPosition().longitude);
+            	 
+            	 Intent intent = new Intent(Manuel.this, NuevaAlarma.class);
+                 intent.putExtra("Alarma", new Gson().toJson(alarma));
+                 startActivity(intent);
+             }
+        });
         
         
         
-        /***********/
-        
-       
-    	
-    		
-    		runnable.run();
-    	
-        
-        
-        
-        /************/
-        //Comprobar c = new Comprobar();
     }
 
     @Override
@@ -131,11 +145,11 @@ public class Manuel extends FragmentActivity
         mFillColor = Color.HSVToColor(alpha, new float[] {color, 1, 1});
         mStrokeColor = Color.BLACK;
 
-        DraggableCircle circle = new DraggableCircle(MADRID, DEFAULT_RADIUS);
+        DraggableCircle circle = new DraggableCircle(ubicacion, distancia);
         dc = circle;
 
         // Move the map so that it is centered on the initial circle
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(MADRID, 4.0f));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 10.0f));
     }
 
    
@@ -163,14 +177,14 @@ public class Manuel extends FragmentActivity
     @Override
 	public void onMapClick(LatLng point) {
     	mMap.clear();
-    	DraggableCircle circle = new DraggableCircle(point, DEFAULT_RADIUS);
+    	DraggableCircle circle = new DraggableCircle(point, distancia);
         dc = circle;
 		
 		Toast toast = Toast.makeText(this, "Posicion: " + point.toString(), Toast.LENGTH_LONG);
 	    toast.show();	
 		
 	}
-    
+    /*
     private Handler handler = new Handler();
 	private Runnable runnable = new Runnable() 
 	{
@@ -199,4 +213,5 @@ public class Manuel extends FragmentActivity
 	        handler.postDelayed(this, 5000);
 	    }
 	};
+	*/
 }
