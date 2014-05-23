@@ -68,7 +68,7 @@ public class Victor extends Activity{
 		alarma.setCancion("Mi Canción");
 		alarma.setFavorito(true);
 		alarma.setActiva(true);
-		alarma.setDireccion("PERICO LOS PALOTES");
+		alarma.setRepetir(1);
 		alarma.setLatitud(aux);
 		alarma.setLongitud(aux);
 		

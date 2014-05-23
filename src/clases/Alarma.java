@@ -6,7 +6,7 @@
 		private String nombre;
 		private int distancia;
 		private boolean activa;
-		private String direccion;
+		private int repetir;
 		private float latitud;
 		private float longitud;
 		private boolean favorito;
@@ -31,7 +31,7 @@
 			this.activa = activa; 
 		}
 	
-		public Alarma(int id, String nombre, String cancion, int distancia, boolean favorito, boolean activa, String direccion, float latitud, float longitud)
+		public Alarma(int id, String nombre, String cancion, int distancia, boolean favorito, boolean activa, int repetir, float latitud, float longitud)
 		{
 			this.id = id;
 			this.nombre = nombre;
@@ -39,7 +39,7 @@
 			this.distancia = distancia;
 			this.favorito = favorito;
 			this.activa = activa;
-			this.direccion = direccion;
+			this.repetir = repetir;
 			this.latitud = latitud;
 			this.longitud = longitud;
 		}
@@ -77,12 +77,12 @@
 			this.activa = activa;
 		}
 	
-		public String getDireccion() {
-			return direccion;
+		public int getRepetir() {
+			return repetir;
 		}
 	
-		public void setDireccion(String direccion) {
-			this.direccion = direccion;
+		public void setRepetir(int repetir) {
+			this.repetir = repetir;
 		}
 	
 		public float getLatitud() {

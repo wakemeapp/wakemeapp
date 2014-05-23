@@ -20,7 +20,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 			"distancia INTEGER, " +
 			"favorito INTEGER, " +
 			"activa INTEGER, " +
-			"direccion TEXT, " +
+			"repetir INTEGER, " +
 			"latitud REAL, " +
 			"longitud REAL" +
 			");";
@@ -32,13 +32,14 @@ public class BaseDatos extends SQLiteOpenHelper {
 			"distancia INTEGER, " +
 			"favorito INTEGER, " +
 			"activa INTEGER, " +
+			"repetir INTEGER, " +
 			"latitud REAL, " +
 			"longitud REAL" +
 			");";
 	
 	private String sqlInsertarDefecto = "INSERT INTO Config " +
-			"(id, nombre, cancion, distancia, favorito, activa, latitud, longitud) " + 
-			"VALUES (0, '','', 50 ,0 , 1, 40.416615, -3.703827)";
+			"(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud) " + 
+			"VALUES (0, '','', 50 ,0 , 1, 1, 40.416615, -3.703827)";
 	
 	
 	@Override

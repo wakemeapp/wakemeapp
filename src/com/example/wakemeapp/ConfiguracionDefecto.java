@@ -1,7 +1,5 @@
 package com.example.wakemeapp;
 
-import java.util.List;
-
 import clases.Alarma;
 import Persistencia.BDOperaciones;
 import android.app.Activity;
@@ -23,11 +21,11 @@ public class ConfiguracionDefecto extends Activity{
 		setContentView(R.layout.configuraciondefecto);
 
 		BDOperaciones bd = new BDOperaciones();
-		List<Alarma> listaPredeterminadas = bd.getAlarmasPredeterminadas(this);
+		Alarma alarma = bd.getAlarmasPredeterminadas(getApplicationContext()).get(0);
 		
-		TextView txtUbicacion = (TextView)findViewById(R.id.txtUbicacion);
+		//TextView txtUbicacion = (TextView)findViewById(R.id.txtUbicacion);
 		
-		txtUbicacion.setText("Hola");
+		//txtUbicacion.setText(alarma.getRepetir());
 		
 		Button btnAtras = (Button)findViewById(R.id.btnAtras);
 		btnAtras.setOnClickListener(new OnClickListener() {

@@ -267,16 +267,16 @@ public class BDOperaciones {
 				int distancia = alarma.getDistancia();
 				int favorito = (alarma.isFavorito()) ? 1 : 0;
 				int activa = (alarma.isActiva()) ? 1 : 0;
-				String direccion= alarma.getDireccion();
+				int repetir= alarma.getRepetir();
 				float latitud = alarma.getLatitud();
 				float longitud = alarma.getLongitud();
 				
 				try{
 				    // Insertamos los datos en la tabla Alarmas
 					db.execSQL("INSERT INTO Alarmas " +
-							"(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud) " + 
+							"(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud) " + 
 							"VALUES (" + id + ", '" + nombre + "','" + cancion + "'" +
-									"," + distancia +","+ favorito + "," + activa + ",'"+direccion+"',"+latitud+","+ longitud +")");
+									"," + distancia +","+ favorito + "," + activa + ",'"+repetir+"',"+latitud+","+ longitud +")");
 					
 				}catch(SQLException e)
 				{
@@ -316,16 +316,16 @@ public class BDOperaciones {
 				int distancia = alarma.getDistancia();
 				int favorito = (alarma.isFavorito()) ? 1 : 0;
 				int activa = (alarma.isActiva()) ? 1 : 0;
-				//String direccion= alarma.getDireccion();
+				int repetir = alarma.getRepetir();
 				float latitud = alarma.getLatitud();
 				float longitud = alarma.getLongitud();
 				
 				try{
 				    // Insertamos los datos en la tabla Alarmas
 					db.execSQL("INSERT INTO Config " +
-							"(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud) " + 
+							"(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud) " + 
 							"VALUES (" + id + ", '" + nombre + "','" + cancion + "'" +
-									"," + distancia +","+ favorito + "," + activa + ","+latitud+","+ longitud +")");
+									"," + distancia +","+ favorito + "," + activa + ","+repetir+","+latitud+","+ longitud +")");
 					
 				}catch(SQLException e)
 				{
@@ -459,7 +459,7 @@ public class BDOperaciones {
 			int distancia = alarma.getDistancia();
 			int favorito = (alarma.isFavorito()) ? 1 : 0;
 			int activa = (alarma.isActiva()) ? 1 : 0;
-			String direccion= alarma.getDireccion();
+			int repetir= alarma.getRepetir();
 			float latitud = alarma.getLatitud();
 			float longitud = alarma.getLongitud();
 			
@@ -469,7 +469,7 @@ public class BDOperaciones {
 			db.execSQL("UPDATE Alarmas " +
 					   "SET id=" + id + ", nombre='" + nombre + "', cancion='" + cancion + "'" +
 							", distancia=" + distancia +", favorito="+ favorito + ", activa=" + activa +
-							", direccion='" + direccion +"', latitud= "+latitud+", longitud="+ longitud +
+							", repetir='" + repetir +"', latitud= "+latitud+", longitud="+ longitud +
 					   " WHERE id=" + idparametro );
 			
 			// Cerramos la base de datos
@@ -501,7 +501,7 @@ public class BDOperaciones {
 			int distancia = alarma.getDistancia();
 			int favorito = (alarma.isFavorito()) ? 1 : 0;
 			int activa = (alarma.isActiva()) ? 1 : 0;
-			//String direccion= alarma.getDireccion();
+			int repetir = alarma.getRepetir();
 			float latitud = alarma.getLatitud();
 			float longitud = alarma.getLongitud();
 			
@@ -511,7 +511,7 @@ public class BDOperaciones {
 			db.execSQL("UPDATE Config " +
 					   "SET id=" + id + ", nombre='" + nombre + "', cancion='" + cancion + "'" +
 							", distancia=" + distancia +", favorito="+ favorito + ", activa=" + activa +
-							", latitud= "+latitud+", longitud="+ longitud +
+							" repetir=" + repetir + ", latitud= "+latitud+", longitud="+ longitud +
 					   " WHERE id=" + idparametro );
 			
 			// Cerramos la base de datos
@@ -605,7 +605,7 @@ public class BDOperaciones {
 					int distancia; 
 					boolean favorito; 
 					boolean activa;
-					String direccion;
+					int repetir;
 					float latitud; 
 					float longitud;
 					
@@ -617,12 +617,12 @@ public class BDOperaciones {
 						distancia = cursor.getInt(3);
 						favorito = (cursor.getInt(4)==1) ? true : false;
 						activa = (cursor.getInt(5)==1) ? true : false;
-						direccion= cursor.getString(6);
+						repetir= cursor.getInt(6);
 						latitud = cursor.getFloat(7);
 						longitud = cursor.getFloat(8);
 						
 						//Creo una alarma con los datos obtenidos de la consulta
-						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud);
+						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud);
 						
 						//Añado la alarma creada a la lista
 						listaActivas.add(alarma);	
@@ -672,7 +672,7 @@ public class BDOperaciones {
 					int distancia; 
 					boolean favorito; 
 					boolean activa;
-					String direccion;
+					int repetir;
 					float latitud; 
 					float longitud;
 					
@@ -684,12 +684,12 @@ public class BDOperaciones {
 						distancia = cursor.getInt(3);
 						favorito = (cursor.getInt(4)==1) ? true : false;
 						activa = (cursor.getInt(5)==1) ? true : false;
-						direccion= cursor.getString(6);
+						repetir= cursor.getInt(6);
 						latitud = cursor.getFloat(7);
 						longitud = cursor.getFloat(8);
 						
 						//Creo una alarma con los datos obtenidos de la consulta
-						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud);
+						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud);
 						
 						//Añado la alarma creada a la lista
 						listaFavoritas.add(alarma);	
@@ -739,7 +739,7 @@ public class BDOperaciones {
 					int distancia; 
 					boolean favorito; 
 					boolean activa;
-					String direccion;
+					int repetir;
 					float latitud; 
 					float longitud;
 					
@@ -751,13 +751,12 @@ public class BDOperaciones {
 						distancia = cursor.getInt(3);
 						favorito = (cursor.getInt(4)==1) ? true : false;
 						activa = (cursor.getInt(5)==1) ? true : false;
-						//direccion= cursor.getString(6);
-						direccion = "";  //ASIGNO DIRECCIÓN VACÍA PORQUE NO ESTARÁ EN LA TABLA CONFIG
-						latitud = cursor.getFloat(6);
-						longitud = cursor.getFloat(7);
+						repetir = cursor.getInt(6);  
+						latitud = cursor.getFloat(7);
+						longitud = cursor.getFloat(8);
 						
 						//Creo una alarma con los datos obtenidos de la consulta
-						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, direccion, latitud, longitud);
+						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud);
 						
 						//Añado la alarma creada a la lista
 						listaPredeterminadas.add(alarma);	
