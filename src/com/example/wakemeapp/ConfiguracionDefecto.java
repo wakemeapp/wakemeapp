@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 public class ConfiguracionDefecto extends Activity{
 	
@@ -23,9 +25,21 @@ public class ConfiguracionDefecto extends Activity{
 		BDOperaciones bd = new BDOperaciones();
 		Alarma alarma = bd.getAlarmasPredeterminadas(getApplicationContext()).get(0);
 		
-		//TextView txtUbicacion = (TextView)findViewById(R.id.txtUbicacion);
+		TextView txtCancion = (TextView)findViewById(R.id.txtCancion);
+		txtCancion.setText(alarma.getCancion());
 		
-		//txtUbicacion.setText(alarma.getRepetir());
+		SeekBar skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
+		skbDistancia.setProgress(alarma.getDistancia());
+		
+		Spinner spRepetirCada = (Spinner)findViewById(R.id.spRepetirCada);
+		spRepetirCada.setSelection(0);
+		
+		
+		TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
+  	 	lblNumero.setText(String.valueOf(alarma.getDistancia()));
+  	 	
+		ToggleButton tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
+	   	tbnFavoritos.setChecked(alarma.isFavorito());   
 		
 		Button btnAtras = (Button)findViewById(R.id.btnAtras);
 		btnAtras.setOnClickListener(new OnClickListener() {
