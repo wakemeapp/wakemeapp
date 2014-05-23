@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 
 import clases.Alarma;
 import Persistencia.BDOperaciones;
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -47,6 +50,38 @@ public class NuevaAlarma extends Activity {
 	   	 
 	   	 txtCancion = (TextView)findViewById(R.id.txtRepetir);
 	   	 txtCancion.setText(alarma.getCancion());
+	   	 
+	   	 txtCancion.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				pickRingtone(v);
+				
+			}
+			
+			public void pickRingtone(View view) {
+		        // TODO Auto-generated method.   stub
+
+		        Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+		        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE,
+		                RingtoneManager.TYPE_RINGTONE);
+		        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Select Ringtone");
+
+		    // for existing ringtone
+		        Uri urie =     RingtoneManager.getActualDefaultRingtoneUri(
+		                getApplicationContext(), RingtoneManager.TYPE_RINGTONE);
+		        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, urie);
+		        
+
+		        startActivityForResult(intent, 5);
+		        
+		      
+				}
+			
+			
+			
+		});
+	   	 
 	   	 
 	   	 skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
 	   	 skbDistancia.setProgress(alarma.getDistancia());
@@ -123,6 +158,25 @@ public class NuevaAlarma extends Activity {
         });
 	}
 
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+	    // Check which request we're responding to
+	    if (requestCode == 5) {
+	    	 if (resultCode == RESULT_OK) {
+	        // Make sure the request was successful
+	       
+	    	Uri uri = data.getParcelableExtra(RingtoneManager.EXTRA_RINGTONE_PICKED_URI);
+	        if (uri != null) {
+	        String ringTonePath = uri.toString();
+	        alarma.setCancion(ringTonePath);	        
+	        Ringtone ringtone = RingtoneManager.getRingtone(this, uri);
+	        String title = ringtone.getTitle(this);
+	        txtCancion.setText(title);
+	        
+	    }}
+	    }
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
