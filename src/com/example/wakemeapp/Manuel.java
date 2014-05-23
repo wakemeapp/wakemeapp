@@ -39,7 +39,7 @@ public class Manuel extends FragmentActivity
     private double distancia = 1000;
     
     private GoogleMap mMap;
-
+    //comentario
     private DraggableCircle dc;
 
     int color = 0;
