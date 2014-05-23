@@ -1,5 +1,7 @@
 package com.example.wakemeapp;
 
+import com.google.gson.Gson;
+
 import clases.Alarma;
 import Persistencia.BDOperaciones;
 import android.os.Bundle;
@@ -16,6 +18,7 @@ import android.widget.ToggleButton;
 
 public class NuevaAlarma extends Activity {
 
+	private Alarma alarma = new Alarma();
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -52,6 +55,7 @@ public class NuevaAlarma extends Activity {
 				
 				TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
 				lblNumero.setText(Integer.toString(progress));
+				alarma.setDistancia(progress);
 			}
 		});
 		
@@ -59,9 +63,7 @@ public class NuevaAlarma extends Activity {
 		Button btnCrear = (Button)findViewById(R.id.btnCrear);
 		btnCrear.setOnClickListener(new OnClickListener() {
              @Override
-             public void onClick(View v) {
-            	 
-            	 Alarma alarma;
+             public void onClick(View v) {    
             	 
             	 int id = 0; //OJO -->HE DADO ID 0 A TODOS, esto habrá que cambiarlo
             	 String nombre;
@@ -95,6 +97,16 @@ public class NuevaAlarma extends Activity {
                  
             	 Intent intent = new Intent(NuevaAlarma.this, Principal.class);
                  startActivity(intent);
+             }
+        });
+		
+		Button btnmapa = (Button)findViewById(R.id.btnmapa);
+		btnmapa.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                  Intent intent = new Intent(NuevaAlarma.this, Manuel.class);                  
+                  intent.putExtra("Alarma", new Gson().toJson(alarma));                  
+                  startActivity(intent);
              }
         });
 	}

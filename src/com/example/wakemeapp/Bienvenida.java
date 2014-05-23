@@ -1,11 +1,17 @@
 package com.example.wakemeapp;
 
+import java.util.List;
+
+import clases.Alarma;
+import Persistencia.BDOperaciones;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -25,6 +31,8 @@ public class Bienvenida extends Activity {
 		setContentView(R.layout.bienvenida);
         progressBar=(ProgressBar) findViewById(R.id.progressbar);
         linea_ayuda = (TextView) findViewById(R.id.linea_ayuda);
+        
+        runnable.run();
 	}
 
 	@Override
@@ -69,4 +77,33 @@ public class Bienvenida extends Activity {
 		super.onActivityResult(requestCode, resultCode, data);
 		finish();
 	}	
+	
+	private Handler handler = new Handler();
+	private Runnable runnable = new Runnable() 
+	{
+
+	    public void run() 
+	    {
+	    	//codigo que se ejecutara periodicamente
+	    	//INICIO
+	    	System.out.println("HOLA");
+
+	    	Context c = getApplicationContext();
+	    	
+	    	
+	    	BDOperaciones bdo = new BDOperaciones();
+	    	List<Alarma> lalarma = bdo.getAlarmasActivas(c);
+	    	for(Alarma a : lalarma){
+	    		System.out.println("---" + a.getNombre());
+	    	}
+	    	
+	    	
+	    	
+	    	//FIN
+	    	
+	    	
+	    	
+	        handler.postDelayed(this, 5000);
+	    }
+	};
 }

@@ -15,6 +15,7 @@ import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.gson.Gson;
 
 import Persistencia.BDOperaciones;
 import android.content.Context;
@@ -31,7 +32,7 @@ import android.widget.Toast;
 public class Manuel extends FragmentActivity 
 		implements OnMapClickListener, OnMarkerDragListener {
     private static final LatLng MADRID = new LatLng(40.416615, -3.703827);
-    private static final double DEFAULT_RADIUS = 1000000;
+    private double DEFAULT_RADIUS = 1000000;
     
     private GoogleMap mMap;
 
@@ -74,7 +75,22 @@ public class Manuel extends FragmentActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manuel);
+        
+        String s="";
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+           s = extras.getString("Alarma");
+        }
+        Alarma alarma = new Gson().fromJson(s, Alarma.class);
+        DEFAULT_RADIUS=alarma.getDistancia();
+        
+        
+        
         setUpMapIfNeeded();
+        
+        
+        
+        
         /***********/
         
        

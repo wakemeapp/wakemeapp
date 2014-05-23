@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" 
-    android:background="@drawable/fondo">
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo" >
 
     <LinearLayout
+        android:id="@+id/linearLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
         android:orientation="vertical" >
-        
+
         <EditText
             android:id="@+id/txtRepetir"
             android:layout_width="match_parent"
@@ -20,7 +21,6 @@
             android:layout_marginTop="10dp"
             android:ems="20"
             android:hint="@string/destino" >
-
         </EditText>
 
         <LinearLayout
@@ -45,7 +45,6 @@
                 android:layout_marginTop="10dp"
                 android:text=""
                 android:textAppearance="?android:attr/textAppearanceLarge" />
-
         </LinearLayout>
 
         <SeekBar
@@ -72,14 +71,12 @@
 
             <ToggleButton
                 android:id="@+id/tbnFavoritos"
-			    android:textOn="" 
-			    android:textOff=""
-			    android:layout_width="wrap_content"
-			    android:layout_height="wrap_content"
-			    android:background="@drawable/toggle_button" />            
-
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/toggle_button"
+                android:textOff=""
+                android:textOn="" />
         </LinearLayout>
-
     </LinearLayout>
 
     <Button
@@ -108,5 +105,14 @@
         android:layout_marginTop="42dp"
         android:ems="20"
         android:hint="@string/ubicacion" />
+
+    <Button
+        android:id="@+id/btnmapa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginLeft="29dp"
+        android:text="Mapa" />
 
 </RelativeLayout>
