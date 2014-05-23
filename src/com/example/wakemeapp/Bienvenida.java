@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -23,8 +25,11 @@ public class Bienvenida extends Activity {
 
 	TextView linea_ayuda;
     ProgressBar progressBar;
-    int progreso=0;
+    int progreso = 0;
     int paso = 500;
+    private Location coordenadas;
+    private LocationManager locManager;
+	private LocationListener locListener;
 	
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +38,7 @@ public class Bienvenida extends Activity {
         progressBar=(ProgressBar) findViewById(R.id.progressbar);
         linea_ayuda = (TextView) findViewById(R.id.linea_ayuda);
         
+        inicializaGPS();
         runnable.run();
 	}
 
@@ -40,7 +46,7 @@ public class Bienvenida extends Activity {
 	protected void onResume() {
 		super.onResume();
 		linea_ayuda.setText("Actualizando la BD..."); //"Inicializando aplicación ..."
-        cuentaAtras(2000);   //3 sec.
+        cuentaAtras(3000);   //3 sec.
 	}
 	
 	
@@ -90,20 +96,24 @@ public class Bienvenida extends Activity {
 	    	System.out.println("HOLA");
 
 	    	Context c = getApplicationContext();
-	    	
-	    	
-	    	BDOperaciones bdo = new BDOperaciones();
-	    	List<Alarma> lalarma = bdo.getAlarmasActivas(c);
-	    	for(Alarma a : lalarma){
-	    		System.out.println("---" + a.getNombre());
+	    	System.out.println(coordenadas != null);
+	    	if (coordenadas != null) {
+	    		BDOperaciones bdo = new BDOperaciones();
+		    	List<Alarma> lalarma = bdo.getAlarmasActivas(c);
+		    	System.out.println(coordenadas.getLatitude());
+		    	System.out.println(coordenadas.getLongitude());
+		    	for(Alarma a : lalarma){
+		    		System.out.println("---" + a.getNombre());
+		    		double distancia = distancia(a, coordenadas);
+		    		if(distancia < a.getDistancia()) {
+		    			System.out.println("Está llegando a su destino. ¡¡Vaya cogiendo sus cosas!!");
+		    			//Notificar al usuario la proximidad al destino
+		    		}
+		    	}
 	    	}
-	    	
-	    	
-	    	
+
 	    	//FIN
-	    	
-	    	
-	    	
+
 	        handler.postDelayed(this, 5000);
 	    }
 	};
@@ -123,6 +133,69 @@ public class Bienvenida extends Activity {
 	
 	private double rad(double x){
 		return (x*Math.PI/180);
+	}
+	
+	private void inicializaGPS() {
+		locManager = (LocationManager)getSystemService(LOCATION_SERVICE);
+ 		List<String> listaProviders = locManager.getAllProviders();
+ 		
+ 		if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+ 			System.out.println("El servicio GPS está desactivado, desea activarlo ahora?");
+ 			showSettingsAlert(Bienvenida.this);
+ 		} else {
+ 			System.out.println("Su servicio está habilitado, enhorabuena!");
+ 		}
+ 		
+ 		locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+ 		
+ 		locListener = new LocationListener() {
+			public void onLocationChanged(Location location) {
+				coordenadas = location;
+			}
+			public void onProviderDisabled(String provider){
+				//lblEstado.setText("Provider OFF");
+			}
+			public void onProviderEnabled(String provider){
+				//lblEstado.setText("Provider ON");
+			}
+			public void onStatusChanged(String provider, int status, Bundle extras){
+			
+			}
+ 		};
+ 		
+ 		locManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 15000, 0, locListener);
+ 		
+	}
+	
+	public void showSettingsAlert(final Activity act){
+	    AlertDialog.Builder alertDialog = new AlertDialog.Builder(act);
+
+	    // Setting Dialog Title
+	    alertDialog.setTitle("Servicio GPS");
+
+	    // Setting Dialog Message
+	    alertDialog.setMessage("El GPS no está habilitado. ¿Desea ir al menú de configuración para activarlo?");
+
+	    // Setting Icon to Dialog
+	    //alertDialog.setIcon(R.drawable.delete);
+
+	    // On pressing Settings button
+	    alertDialog.setPositiveButton("Configuración", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog,int which) {
+	            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+	            act.startActivity(intent);
+	        }
+	    });
+
+	    // on pressing cancel button
+	    alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+	        public void onClick(DialogInterface dialog, int which) {
+	        	dialog.cancel();
+	        }
+	    });
+
+	    // Showing Alert Message
+	    alertDialog.create().show();
 	}
 	
 	

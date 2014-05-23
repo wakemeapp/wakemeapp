@@ -47,8 +47,11 @@ public class Luis extends Activity{
          		//System.out.println(provider1.getName() + ": " + provider1.getAccuracy() + " " + provider1.supportsAltitude() + " " + provider1.getPowerRequirement());
          		
          		
+         		System.out.println("eyyyyy" + locManager.isProviderEnabled(LocationManager.GPS_PROVIDER));
+         		
+         		
          		if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
-         			System.out.println("El servicio de GPS está desactivado, desea activarlo ahora?");
+         			System.out.println("El servicio GPS está desactivado, desea activarlo ahora?");
          			showSettingsAlert(Luis.this);
          		} else {
          			System.out.println("Su servicio está habilitado, enhorabuena!");
@@ -124,16 +127,16 @@ public class Luis extends Activity{
 	    AlertDialog.Builder alertDialog = new AlertDialog.Builder(act);
 
 	    // Setting Dialog Title
-	    alertDialog.setTitle("GPS is settings");
+	    alertDialog.setTitle("Servicio GPS");
 
 	    // Setting Dialog Message
-	    alertDialog.setMessage("GPS is not enabled. Do you want to go to settings menu?");
+	    alertDialog.setMessage("El GPS no está habilitado. ¿Desea ir al menú de configuración para activarlo?");
 
 	    // Setting Icon to Dialog
 	    //alertDialog.setIcon(R.drawable.delete);
 
 	    // On pressing Settings button
-	    alertDialog.setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+	    alertDialog.setPositiveButton("Configuración", new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog,int which) {
 	            Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
 	            act.startActivity(intent);
@@ -141,7 +144,7 @@ public class Luis extends Activity{
 	    });
 
 	    // on pressing cancel button
-	    alertDialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+	    alertDialog.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
 	        public void onClick(DialogInterface dialog, int which) {
 	        	dialog.cancel();
 	        }
