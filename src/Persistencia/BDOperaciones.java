@@ -511,7 +511,7 @@ public class BDOperaciones {
 			db.execSQL("UPDATE Config " +
 					   "SET id=" + id + ", nombre='" + nombre + "', cancion='" + cancion + "'" +
 							", distancia=" + distancia +", favorito="+ favorito + ", activa=" + activa +
-							" repetir=" + repetir + ", latitud= "+latitud+", longitud="+ longitud +
+							", repetir=" + repetir + ", latitud= "+latitud+", longitud="+ longitud +
 					   " WHERE id=" + idparametro );
 			
 			// Cerramos la base de datos

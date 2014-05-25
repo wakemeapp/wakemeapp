@@ -14,8 +14,16 @@ import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 
 public class ConfiguracionDefecto extends Activity{
+	
+	private Alarma alarma = new Alarma();
+	private TextView txtCancion;
+	private SeekBar skbDistancia;
+	private ToggleButton tbnFavoritos;
+	private TextView lblNumero;
+	private Spinner spRepetirCada;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +31,62 @@ public class ConfiguracionDefecto extends Activity{
 		setContentView(R.layout.configuraciondefecto);
 
 		BDOperaciones bd = new BDOperaciones();
-		Alarma alarma = bd.getAlarmasPredeterminadas(getApplicationContext()).get(0);
+		alarma = bd.getAlarmasPredeterminadas(getApplicationContext()).get(0);
 		
-		TextView txtCancion = (TextView)findViewById(R.id.txtCancion);
+		txtCancion = (TextView)findViewById(R.id.txtCancion);
 		txtCancion.setText(alarma.getCancion());
 		
-		SeekBar skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
+		skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
 		skbDistancia.setProgress(alarma.getDistancia());
 		
-		Spinner spRepetirCada = (Spinner)findViewById(R.id.spRepetirCada);
+		spRepetirCada = (Spinner)findViewById(R.id.spRepetirCada);
 		spRepetirCada.setSelection(0);
 		
-		
-		TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
+		lblNumero = (TextView)findViewById(R.id.lblNumero);
   	 	lblNumero.setText(String.valueOf(alarma.getDistancia()));
   	 	
-		ToggleButton tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
+		tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
 	   	tbnFavoritos.setChecked(alarma.isFavorito());   
+	   	
+	   	skbDistancia.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+			@Override
+			public void onStopTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onStartTrackingTouch(SeekBar seekBar) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void onProgressChanged(SeekBar seekBar, int progress,
+					boolean fromUser) {
+				// TODO Auto-generated method stub
+				
+				TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
+				lblNumero.setText(Integer.toString(progress));
+				//alarma.setDistancia(progress);
+			}
+		});
+
+		Button btnCrear = (Button)findViewById(R.id.btnCrear);
+		btnCrear.setOnClickListener(new OnClickListener() {
+             @Override
+             public void onClick(View v) {    
+            	 getparametros();
+            	 
+            	 BDOperaciones bd = new BDOperaciones();
+            	 bd.modificarPredeterminada(ConfiguracionDefecto.this.getApplicationContext(), 0, alarma);
+            	 
+            	 //System.out.println("Mi alarma es: " + alarma.getId() + " " + alarma.getNombre() + " " + alarma.getCancion() + " " + alarma.getDistancia() + " " + alarma.isFavorito() + " " + alarma.isActiva());
+                 
+            	 Intent intent = new Intent(ConfiguracionDefecto.this, Principal.class);
+                 startActivity(intent);
+             }
+        });
 		
 		Button btnAtras = (Button)findViewById(R.id.btnAtras);
 		btnAtras.setOnClickListener(new OnClickListener() {
@@ -57,6 +104,66 @@ public class ConfiguracionDefecto extends Activity{
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
+	
+	private void getparametros(){		
+	   	alarma.setCancion(txtCancion.getText().toString()); 
+	   	alarma.setDistancia(skbDistancia.getProgress());
+	   	alarma.setFavorito(tbnFavoritos.isChecked());
+	   	
+	   	//AlertDialog alertDialog;
+	   	//alertDialog = new AlertDialog.Builder(this).create();
+	   	//alertDialog.setTitle("Packing List");
+	   	//alertDialog.setMessage("SELECTEDITEM = " + spRepetirCada.getSelectedItem());
+	   	//alertDialog.show();
+	   	
+	   	String auxSeleccionado = spRepetirCada.getSelectedItem().toString();
+	   	
+	   	//Lo he hecho con todo IFs porque si lo haces con un Switch e intentas
+	   	//comaparar textos necesitas la versión Java 1.7 y la única que de momento
+	   	//usa java 1.7 en Android es la versión KitKat 4.4 y no hay necesidad de requerir
+	   	//java 4.4 para nada más que hacer esto
+	   	int auxRepetirCada;
+	   	if(auxSeleccionado.compareTo("Cada Minuto")==0)
+	   	{
+	   		auxRepetirCada = 1;
+	   	}
+	   	else
+	   	{
+	   		if(auxSeleccionado.compareTo("Cada 3 Minutos")==0)
+	   		{
+	   			auxRepetirCada = 3;
+	   		}
+	   		else
+	   		{
+	   			if(auxSeleccionado.compareTo("Cada 5 Minutos")==0)
+	   			{
+	   				auxRepetirCada = 5;
+	   			}
+	   			else
+	   			{
+	   				if(auxSeleccionado.compareTo("Cada 10 Minutos")==0)
+	   				{
+	   					auxRepetirCada = 10;
+	   				}
+	   				else
+	   				{
+	   					if(auxSeleccionado.compareTo("Cada 15 Minutos")==0)
+	   					{
+	   						auxRepetirCada = 15;
+	   					}
+	   					else
+	   					{
+	   						//En otros casos = 1
+	   						auxRepetirCada = 1;
+	   					}
+	   				}
+	   			}
+	   		}
+	   	}
+	   	
+	   	alarma.setRepetir(auxRepetirCada);
+	}
+	
 	
 	public class SpinnerExample extends Activity {
 	    private String array_spinner[];
