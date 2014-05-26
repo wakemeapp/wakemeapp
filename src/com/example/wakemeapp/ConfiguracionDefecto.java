@@ -43,7 +43,7 @@ public class ConfiguracionDefecto extends Activity{
 		spRepetirCada.setSelection(0);
 		
 		lblNumero = (TextView)findViewById(R.id.lblNumero);
-  	 	lblNumero.setText(String.valueOf(alarma.getDistancia()));
+  	 	lblNumero.setText(String.valueOf(alarma.getDistancia()) + " metros");
   	 	
 		tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
 	   	tbnFavoritos.setChecked(alarma.isFavorito());   
@@ -67,7 +67,7 @@ public class ConfiguracionDefecto extends Activity{
 				// TODO Auto-generated method stub
 				
 				TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
-				lblNumero.setText(Integer.toString(progress));
+				lblNumero.setText(Integer.toString(progress) + " metros");
 				//alarma.setDistancia(progress);
 			}
 		});

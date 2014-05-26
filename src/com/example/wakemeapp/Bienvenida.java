@@ -144,7 +144,7 @@ public class Bienvenida extends Activity {
 						
 						RingtoneManager.setActualDefaultRingtoneUri(c,RingtoneManager.TYPE_RINGTONE,cancion);
 
-						notificacion.setLatestEventInfo(Bienvenida.this.getApplicationContext(),"WakeMeApp", a.getDistancia() + " hasta " +a.getNombre(),pi);
+						notificacion.setLatestEventInfo(Bienvenida.this.getApplicationContext(),"WakeMeApp", a.getDistancia() + " metros hasta " +a.getNombre(),pi);
 						nm.notify(ID_NOTIFICACION_CREAR, notificacion);
 						pararNotificacion();
 						startActivity(i);

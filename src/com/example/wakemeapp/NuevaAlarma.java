@@ -93,7 +93,7 @@ public class NuevaAlarma extends Activity {
 	   	 tbnActivar.setChecked(alarma.isActiva());
 	   	 
 	   	 lblNumero = (TextView)findViewById(R.id.lblNumero);
-   	 	 lblNumero.setText(String.valueOf(alarma.getDistancia()));
+   	 	 lblNumero.setText(String.valueOf(alarma.getDistancia()) + " metros");
 		
 		skbDistancia.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			
@@ -115,7 +115,7 @@ public class NuevaAlarma extends Activity {
 				// TODO Auto-generated method stub
 				
 				TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
-				lblNumero.setText(Integer.toString(progress));
+				lblNumero.setText(Integer.toString(progress) + " metros");
 				alarma.setDistancia(progress);
 			}
 		});
