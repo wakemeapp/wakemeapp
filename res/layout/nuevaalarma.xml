@@ -19,8 +19,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="10dp"
+            android:editable="false"
             android:ems="20"
             android:hint="@string/nombreCancion" >
+
         </EditText>
 
         <LinearLayout
