@@ -11,7 +11,7 @@
 		private float longitud;
 		private boolean favorito;
 		private String cancion;
-		private boolean notificada;
+		private boolean notificada = true;
 
 		public Alarma(){
 			
@@ -43,20 +43,7 @@
 			this.repetir = repetir;
 			this.latitud = latitud;
 			this.longitud = longitud;
-		}
-		
-		public Alarma(int id, String nombre, String cancion, int distancia, boolean favorito, boolean activa, int repetir, float latitud, float longitud, boolean notificada)
-		{
-			this.id = id;
-			this.nombre = nombre;
-			this.cancion = cancion;
-			this.distancia = distancia;
-			this.favorito = favorito;
-			this.activa = activa;
-			this.repetir = repetir;
-			this.latitud = latitud;
-			this.longitud = longitud;
-			this.notificada = notificada;
+			
 		}
 		
 		

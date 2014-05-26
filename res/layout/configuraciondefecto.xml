@@ -100,6 +100,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="40dp"
         android:layout_weight="1"
+        android:editable="false"
         android:ems="10"
         android:hint="Canción" >
 
