@@ -21,9 +21,6 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
-	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
-  <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
-  <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19" />
 	<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
 		
@@ -33,17 +30,21 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
-        <!-- MANUEL --><meta-data 
+        <!-- MANUEL <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
+<<<<<<< HEAD
             android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/>
             
 		<!--Mariano: android:value="AIzaSyBK_6t7pU3te1631vxnyTYM9kjbbjj0t3A"/>	 -->
         
         
+=======
+			android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/> -->
+>>>>>>> dd2b1eac7d18063b85b6faabd981e888d4a551c2
         
-        <!-- VICTOR <meta-data 
+        <!--VICTOR --><meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
-			android:value="AIzaSyD8JYdJLRCmG2fsFGCyMS27mXXyeWVFO-M"/>-->
+			android:value="AIzaSyCFjArpNyRSuVYY4sONga2xNiXRU64g7W4"/>
         
         <!-- LUIS <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"

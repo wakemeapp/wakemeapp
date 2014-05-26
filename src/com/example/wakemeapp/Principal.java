@@ -51,7 +51,8 @@ public class Principal extends Activity {
                   startActivity(intent);
              }
         });
-        
+
+        /*
         Button btnluis = (Button)findViewById(R.id.btnluis);
         btnluis.setOnClickListener(new OnClickListener() {
              @Override
@@ -78,6 +79,7 @@ public class Principal extends Activity {
                   startActivity(intent);
              }
         });
+        */
         
         ImageButton btnconfig = (ImageButton)findViewById(R.id.btnconfig);
         btnconfig.setOnClickListener(new OnClickListener() {
