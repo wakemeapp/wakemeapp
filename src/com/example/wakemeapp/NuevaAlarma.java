@@ -114,9 +114,11 @@ public class NuevaAlarma extends Activity {
 					boolean fromUser) {
 				// TODO Auto-generated method stub
 				
+				
+				int stepSize = 5;
 				TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
-				lblNumero.setText(Integer.toString(progress) + " metros");
-				alarma.setDistancia(progress);
+				lblNumero.setText(Integer.toString((progress/stepSize) * stepSize) + " metros");
+				alarma.setDistancia((progress/stepSize) * stepSize);
 			}
 		});
 		

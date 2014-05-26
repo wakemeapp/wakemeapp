@@ -4,6 +4,8 @@ import clases.Alarma;
 import Persistencia.BDOperaciones;
 import android.app.Activity;
 import android.content.Intent;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -48,6 +50,35 @@ public class ConfiguracionDefecto extends Activity{
 		tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
 	   	tbnFavoritos.setChecked(alarma.isFavorito());   
 	   	
+	   	
+	   	txtCancion = (TextView)findViewById(R.id.txtCancion);
+	   	 txtCancion.setText(alarma.getCancion());
+	   	 
+	   	 txtCancion.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				pickRingtone(v);
+				
+			}
+			
+			public void pickRingtone(View view) {
+		        // TODO Auto-generated method.   stub
+
+		        Intent intent = new Intent(RingtoneManager.ACTION_RINGTONE_PICKER);
+		        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE,
+		                RingtoneManager.TYPE_RINGTONE);
+		        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE, "Select Ringtone");
+
+		    // for existing ringtone
+		        Uri urie =     RingtoneManager.getActualDefaultRingtoneUri(
+		                getApplicationContext(), RingtoneManager.TYPE_RINGTONE);
+		        intent.putExtra(RingtoneManager.EXTRA_RINGTONE_EXISTING_URI, urie);
+		        
+		        startActivityForResult(intent, 5);
+				}
+		});
+	   	
 	   	skbDistancia.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 			@Override
 			public void onStopTrackingTouch(SeekBar seekBar) {
@@ -65,9 +96,10 @@ public class ConfiguracionDefecto extends Activity{
 			public void onProgressChanged(SeekBar seekBar, int progress,
 					boolean fromUser) {
 				// TODO Auto-generated method stub
-				
-				TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
-				lblNumero.setText(Integer.toString(progress) + " metros");
+
+				int stepSize = 5;
+				lblNumero = (TextView)findViewById(R.id.lblNumero);
+				lblNumero.setText(Integer.toString((progress/stepSize) * stepSize) + " metros");
 				//alarma.setDistancia(progress);
 			}
 		});
