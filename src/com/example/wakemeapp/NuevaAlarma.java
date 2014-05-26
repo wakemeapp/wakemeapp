@@ -29,6 +29,7 @@ public class NuevaAlarma extends Activity {
 	private ToggleButton tbnFavoritos;
 	private ToggleButton tbnActivar;
 	private TextView lblNumero;
+	private int stepSize = 5;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -106,7 +107,6 @@ public class NuevaAlarma extends Activity {
 			@Override
 			public void onStartTrackingTouch(SeekBar seekBar) {
 				// TODO Auto-generated method stub
-				
 			}
 			
 			@Override
@@ -115,10 +115,9 @@ public class NuevaAlarma extends Activity {
 				// TODO Auto-generated method stub
 				
 				
-				int stepSize = 5;
 				TextView lblNumero = (TextView)findViewById(R.id.lblNumero);
-				lblNumero.setText(Integer.toString((progress/stepSize) * stepSize) + " metros");
-				alarma.setDistancia((progress/stepSize) * stepSize);
+				lblNumero.setText(Integer.toString(getProgresoConPaso(progress, stepSize)) + " metros");
+				alarma.setDistancia(getProgresoConPaso(progress, stepSize));
 			}
 		});
 		
@@ -179,6 +178,10 @@ public class NuevaAlarma extends Activity {
 	    }
 	}
 	
+	private int getProgresoConPaso(int progreso, int paso) {
+		return (progreso/paso) * paso;
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -189,7 +192,7 @@ public class NuevaAlarma extends Activity {
 	private void getparametros(){		
 		alarma.setNombre(txtNombre.getText().toString()); 
 	   	alarma.setCancion(txtCancion.getText().toString()); 
-	   	alarma.setDistancia(skbDistancia.getProgress());
+	   	alarma.setDistancia(getProgresoConPaso(skbDistancia.getProgress(), stepSize));
 	   	alarma.setFavorito(tbnFavoritos.isChecked());
 	   	alarma.setActiva(tbnActivar.isChecked());
 	}

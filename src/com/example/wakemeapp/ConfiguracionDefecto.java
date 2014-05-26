@@ -26,6 +26,7 @@ public class ConfiguracionDefecto extends Activity{
 	private ToggleButton tbnFavoritos;
 	private TextView lblNumero;
 	private Spinner spRepetirCada;
+	private int stepSize = 5;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -97,9 +98,9 @@ public class ConfiguracionDefecto extends Activity{
 					boolean fromUser) {
 				// TODO Auto-generated method stub
 
-				int stepSize = 5;
+				
 				lblNumero = (TextView)findViewById(R.id.lblNumero);
-				lblNumero.setText(Integer.toString((progress/stepSize) * stepSize) + " metros");
+				lblNumero.setText(Integer.toString(getProgresoConPaso(progress,stepSize)) + " metros");
 				//alarma.setDistancia(progress);
 			}
 		});
@@ -137,9 +138,13 @@ public class ConfiguracionDefecto extends Activity{
 		return true;
 	}
 	
+	private int getProgresoConPaso(int progreso, int paso) {
+		return (progreso/paso) * paso;
+	}
+	
 	private void getparametros(){		
 	   	alarma.setCancion(txtCancion.getText().toString()); 
-	   	alarma.setDistancia(skbDistancia.getProgress());
+	   	alarma.setDistancia(getProgresoConPaso(skbDistancia.getProgress(),stepSize));
 	   	alarma.setFavorito(tbnFavoritos.isChecked());
 	   	
 	   	//AlertDialog alertDialog;
