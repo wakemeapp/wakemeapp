@@ -21,5 +21,7 @@
         <item>Cada 10 Minutos</item>
         <item>Cada 15 Minutos</item>
     </string-array>
+    <string name="nombreAlarma">Nombre</string>
+    <string name="nombreCancion">Canción</string>
 	
 </resources>

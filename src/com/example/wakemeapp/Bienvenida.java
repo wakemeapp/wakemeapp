@@ -55,7 +55,7 @@ public class Bienvenida extends Activity {
 	protected void onResume() {
 		super.onResume();
 		linea_ayuda.setText("Actualizando la BD..."); //"Inicializando aplicación ..."
-        cuentaAtras(3000);   //3 sec.
+        cuentaAtras(10000);   //3 sec.
 	}
 	
 	

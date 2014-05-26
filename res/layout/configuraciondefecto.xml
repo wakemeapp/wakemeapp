@@ -67,15 +67,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="@string/crear" />
+        android:text="Guardar" />
 
     <Spinner
         android:id="@+id/spRepetirCada"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
         android:layout_below="@+id/linearLayout1"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="30dp"
         android:layout_weight="1"
         android:entries="@array/repetirCada"
         android:prompt="@string/tituloRepetirAlarma" />
@@ -87,7 +86,9 @@
         android:layout_below="@+id/spRepetirCada"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="16dp"
-        android:background="@drawable/toggle_button" />
+        android:background="@drawable/toggle_button"
+        android:textOff=""
+        android:textOn="" />
 
     <EditText
         android:id="@+id/txtCancion"
@@ -103,5 +104,15 @@
 
         <requestFocus />
     </EditText>
+
+    <TextView
+        android:id="@+id/lblRepetir"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_marginBottom="20dp"
+        android:text="Repetir"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
 </RelativeLayout>
