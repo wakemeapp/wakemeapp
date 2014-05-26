@@ -125,19 +125,19 @@ public class Bienvenida extends Activity {
 					if(distancia < a.getDistancia()) {
 						System.out.println("Está llegando a su destino. ¡¡Vaya cogiendo sus cosas!!");
 						//Notificar al usuario la proximidad al destino
-					if(flag_notificacion==1){
+					//if(a.notificada()){
 						Notification notificacion = new Notification(
 								R.drawable.icono,
 								a.getNombre(),
 								System.currentTimeMillis() );
 
-						Uri cancion= Uri.parse(a.getCancion());
+						Uri cancion= Uri.parse("R.raw.cancion");// Uri.parse(a.getCancion());
 								//Uri.parse("R.raw.cancion");
-						notificacion.sound = cancion;
+						//notificacion.sound = cancion;
 
 
 						Context conte= Bienvenida.this.getApplicationContext();
-
+						RingtoneManager.setActualDefaultRingtoneUri(c,RingtoneManager.TYPE_RINGTONE,cancion);
 						Intent i = new Intent(Bienvenida.this, Principal.class);
 						PendingIntent pi =PendingIntent.getActivity(Bienvenida.this.getApplicationContext(), 0, i, 0);
 
@@ -148,7 +148,7 @@ public class Bienvenida extends Activity {
 						nm.notify(ID_NOTIFICACION_CREAR, notificacion);
 						pararNotificacion();
 						startActivity(i);
-					}
+					//}
 
 					}
 				}

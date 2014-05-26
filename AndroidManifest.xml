@@ -12,7 +12,7 @@
   <!-- End of copy. -->
     
 
-    <!-- <permission
+    <permission
 			android:name="com.example.wakemeapp.permission.MAPS_RECEIVE"
 			android:protectionLevel="signature"/>
 	<uses-permission android:name="com.example.wakemeapp.permission.MAPS_RECEIVE"/>-->
@@ -21,6 +21,9 @@
 	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
 	<uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>
+	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.CHANGE_CONFIGURATION" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
 	<uses-sdk android:minSdkVersion="8" android:targetSdkVersion="19" />
 	<uses-feature android:glEsVersion="0x00020000" android:required="true"/>
 		
@@ -30,24 +33,23 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         
-        <!-- MANUEL --> <meta-data 
+        <!-- Mariano --> <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/>
+            android:value="AIzaSyBK_6t7pU3te1631vxnyTYM9kjbbjj0t3A"/>
             
-		<!-- Mariano: android:value="AIzaSyBK_6t7pU3te1631vxnyTYM9kjbbjj0t3A"/>	 -->
-        
-        
-=======
-			android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/> -->
->>>>>>> dd2b1eac7d18063b85b6faabd981e888d4a551c2
-        
-        <!--VICTOR --><meta-data 
+            
+		 <!-- Manu  <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
-			android:value="AIzaSyCFjArpNyRSuVYY4sONga2xNiXRU64g7W4"/>
+            android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/> -->
+		
+
+        <!--VICTOR <meta-data 
+            android:name="com.google.android.maps.v2.API_KEY"
+			android:value="AIzaSyChYiSxAhZ6dD6B3oJqQwuA0f8q-fnz18M"/> -->
         
         <!-- LUIS <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
-			android:value="AIzaSyDNFqGzynTHxPv697BuO54_o4zlItkz8u8"/>-->
+			android:value="AIzaSyBCwJCLPq8VTE2_xKBxkPR9IxR1uetTTxI"/>-->
         
         
         <meta-data
