@@ -37,7 +37,7 @@ public class Bienvenida extends Activity {
 	private LocationListener locListener;
 	private NotificationManager nm;  
 	private static final int ID_NOTIFICACION_CREAR = 1;
-	private int flag_notificacion =1;
+
 	
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -95,17 +95,10 @@ public class Bienvenida extends Activity {
 	}	
 	
 	
-	public void pararNotificacion(){
-		this.flag_notificacion=0;
-	}
-	
-	public void reiniciarNoticiacion(){
-		this.flag_notificacion=1;
-	}
 	private Handler handler = new Handler();
 	private Runnable runnable = new Runnable() 
 	{
-
+		
 		public void run() 
 		{
 			//codigo que se ejecutara periodicamente
@@ -113,10 +106,12 @@ public class Bienvenida extends Activity {
 			System.out.println("Ejecutando run");
 
 			Context c = getApplicationContext();
+			BDOperaciones bdo = new BDOperaciones();
+			List<Alarma> lalarma = bdo.getAlarmasActivas(c);
+			
 			System.out.println(coordenadas != null);
 			if (coordenadas != null) {
-				BDOperaciones bdo = new BDOperaciones();
-				List<Alarma> lalarma = bdo.getAlarmasActivas(c);
+				
 				System.out.println(coordenadas.getLatitude());
 				System.out.println(coordenadas.getLongitude());
 				for(Alarma a : lalarma){
@@ -125,7 +120,7 @@ public class Bienvenida extends Activity {
 					if(distancia < a.getDistancia()) {
 						System.out.println("Está llegando a su destino. ¡¡Vaya cogiendo sus cosas!!");
 						//Notificar al usuario la proximidad al destino
-					//if(a.notificada()){
+					if(!a.isNotificada()){
 						Notification notificacion = new Notification(
 								R.drawable.icono,
 								a.getNombre(),
@@ -133,7 +128,7 @@ public class Bienvenida extends Activity {
 
 						Uri cancion= Uri.parse("R.raw.cancion");// Uri.parse(a.getCancion());
 								//Uri.parse("R.raw.cancion");
-						//notificacion.sound = cancion;
+						notificacion.sound = cancion;
 
 
 						Context conte= Bienvenida.this.getApplicationContext();
@@ -146,9 +141,11 @@ public class Bienvenida extends Activity {
 
 						notificacion.setLatestEventInfo(Bienvenida.this.getApplicationContext(),"WakeMeApp", a.getDistancia() + " metros hasta " +a.getNombre(),pi);
 						nm.notify(ID_NOTIFICACION_CREAR, notificacion);
-						pararNotificacion();
+						
+						System.out.println("La notificacion está en "+ a.isNotificada());
+						a.setNotificada(true);
 						startActivity(i);
-					//}
+					}
 
 					}
 				}

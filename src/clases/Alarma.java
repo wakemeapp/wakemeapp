@@ -11,7 +11,7 @@
 		private float longitud;
 		private boolean favorito;
 		private String cancion;
-		private boolean notificada = true;
+		private boolean notificada = false;
 
 		public Alarma(){
 			
