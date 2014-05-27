@@ -7,7 +7,7 @@
 	<string name="atras">Atrás</string>
 	<string name="agregar">Agregar</string>
 	<!--  <string name="acerca">WakeMeApp ha sido desarrollada por Luis, Manuel y Víctor y forma parte de un proyecto desarrollado en la asignatura &apos;Informática Móvil&apos;</string>-->
-	<string name="acerca">WakeMeApp ha sido desarrollada por Luis, Manuel, Mariano y Víctor y forma parte de un proyecto desarrollado en la asignatura Informática Móvil</string>
+	<string name="acerca">WakeMeApp ha sido desarrollada por Luis, Manuel, Mariano y Víctor y forma parte de un proyecto desarrollado para la asignatura Informática Móvil en la Universidad de La Rioja.</string>
 	<string name="desc">WakeMeApp Team</string>
 	<string name="crear">Crear</string>
 	<string name="ubicacion">Ubicación</string>
@@ -24,5 +24,10 @@
     </string-array>
     <string name="nombreAlarma">Nombre</string>
     <string name="nombreCancion">Canción</string>
+    <string name="acercaDe">Acerca De</string>
+    <string name="favoritos">Favoritos</string>
+    <string name="crearAlarma">Crear Alarma</string>
+    <string name="verActivas">Alarmas Activas</string>
+    <string name="settings">Ajustes</string>
 	
 </resources>
