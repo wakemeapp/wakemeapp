@@ -28,7 +28,7 @@ public class Favoritos extends Activity {
         ListView favoritos = (ListView)findViewById(R.id.listView1);	            
         favoritos.setAdapter(adapterM);
 		
-		Button btnAtras = (Button)findViewById(R.id.button1);
+		Button btnAtras = (Button)findViewById(R.id.btAtrasFav);
 		btnAtras.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
