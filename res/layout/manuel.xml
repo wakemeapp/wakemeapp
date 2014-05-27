@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:text="Atras" />
+        android:text="@string/atras" />
 
     <Button
         android:id="@+id/btnAlarma"
@@ -30,6 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:text="Añadir" />
+        android:text="@string/agregar" />
 
 </RelativeLayout>
