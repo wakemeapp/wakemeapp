@@ -37,6 +37,7 @@ public class Bienvenida extends Activity {
 	private LocationListener locListener;
 	private NotificationManager nm;  
 	private static final int ID_NOTIFICACION_CREAR = 1;
+	private boolean gpsActivado = false;
 
 	
     @Override
@@ -80,20 +81,47 @@ public class Bienvenida extends Activity {
 	            progreso+= paso;
 	            progressBar.setProgress(progreso);
 	            progressBar.setVisibility(View.INVISIBLE);
-	            Intent intent = new Intent(Bienvenida.this, Principal.class);
-                startActivity(intent);}
-	        };
 
-	        mCountDownTimer.start();
-	    }
+	            if(!gpsActivado) {
+	            	showSettingsAlert(Bienvenida.this);
+	            }
+	            else {
+	            	Intent intent = new Intent(Bienvenida.this, Principal.class);
+	                startActivity(intent);
+	            }
+	        }
+	    };
 
+	    mCountDownTimer.start();
+	}
+
+	/*
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
 		super.onActivityResult(requestCode, resultCode, data);
-		finish();
+		//finish();
+		
+		System.out.println("RequestCode: " + requestCode);
+		System.out.println("ResultCode: " + resultCode);
+		
+		if (requestCode == 1) {  
+			System.out.println();
+            if(resultCode == RESULT_OK){        
+                System.out.println("Ha ido Bien"); 
+                Intent intent = new Intent(Bienvenida.this, Principal.class);
+                startActivity(intent);
+            }  
+            if (resultCode == RESULT_CANCELED) {    
+            	System.out.println("Ha ido Mal");
+            	Intent startMain = new Intent(Intent.ACTION_MAIN);
+	 			startMain.addCategory(Intent.CATEGORY_HOME);
+	 			startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+	 			startActivity(startMain);
+            }  
+         }
 	}	
-	
+	*/
 	
 	private Handler handler = new Handler();
 	private Runnable runnable = new Runnable() 
@@ -180,9 +208,10 @@ public class Bienvenida extends Activity {
  		
  		if (!locManager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
  			System.out.println("El servicio GPS está desactivado, desea activarlo ahora?");
- 			showSettingsAlert(Bienvenida.this);
+ 			//showSettingsAlert(Bienvenida.this);
  		} else {
  			System.out.println("Su servicio está habilitado, enhorabuena!");
+ 			gpsActivado = true;
  		}
  		
  		locManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
@@ -207,7 +236,8 @@ public class Bienvenida extends Activity {
 	}
 	
 	public void showSettingsAlert(final Activity act){
-	    AlertDialog.Builder alertDialog = new AlertDialog.Builder(act);
+	    /*
+		AlertDialog.Builder alertDialog = new AlertDialog.Builder(act);
 
 	    // Setting Dialog Title
 	    alertDialog.setTitle("Servicio GPS");
@@ -235,7 +265,13 @@ public class Bienvenida extends Activity {
 
 	    // Showing Alert Message
 	    alertDialog.create().show();
+	    */
+		
+		Intent intent = new Intent(this,AlertDialogExample.class);  
+        startActivityForResult(intent, 1);  
 	}
+	
+	
 	
 	
 }
