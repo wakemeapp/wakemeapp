@@ -11,7 +11,7 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
 
-public class AlertDialogExample extends Activity{
+public class AlertDialogGPS extends Activity{
 
 	final Context context = this;
 	LocationManager locManager;
@@ -47,8 +47,11 @@ public class AlertDialogExample extends Activity{
 	        	System.out.println("Cancel");
 	        	
 	        	//salir de la aplicacion
-	        	System.runFinalizersOnExit(true);
-	        	System.exit(0);
+	        	
+	        	finish();
+	        	
+	        	//System.runFinalizersOnExit(true);
+	        	//System.exit(0);
 	        	//android.os.Process.killProcess(android.os.Process.myPid());
 	 			/*
 	        	Intent startMain = new Intent(Intent.ACTION_MAIN);
@@ -87,7 +90,7 @@ public class AlertDialogExample extends Activity{
 	 			startActivity(startMain);
 	 			*/
 	 		} else {
-	 			Intent intent = new Intent(AlertDialogExample.this, Principal.class);
+	 			Intent intent = new Intent(AlertDialogGPS.this, Principal.class);
 	 	        startActivity(intent);
 	 		}
 		}  

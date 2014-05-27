@@ -98,10 +98,12 @@ public class Bienvenida extends Activity {
 	    mCountDownTimer.start();
 	}
 
-	/*
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
+		
+		/*
 		super.onActivityResult(requestCode, resultCode, data);
 		//finish();
 		
@@ -123,8 +125,10 @@ public class Bienvenida extends Activity {
 	 			startActivity(startMain);
             }  
          }
+         */
+    	finish();
 	}	
-	*/
+	
 	
 	private Handler handler = new Handler();
 	private Runnable runnable = new Runnable() 
@@ -277,7 +281,7 @@ public class Bienvenida extends Activity {
 	    alertDialog.create().show();
 	    */
 		
-		Intent intent = new Intent(this,AlertDialogExample.class);  
+		Intent intent = new Intent(this,AlertDialogGPS.class);  
         startActivityForResult(intent, 1);  
 	}
 	
