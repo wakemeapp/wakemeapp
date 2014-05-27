@@ -159,6 +159,7 @@ public class Bienvenida extends Activity {
 
 							Uri cancion = Uri.parse(a.getCancion());
 
+							
 							RingtoneManager.setActualDefaultRingtoneUri(c, 4, cancion);
 							
 							notificacion.sound = cancion;

@@ -56,7 +56,9 @@ public class NuevaAlarma extends Activity {
 		txtNombre.setText(alarma.getNombre());
 
 		txtCancion = (TextView) findViewById(R.id.txtRepetir);
-		txtCancion.setText(alarma.getCancion());
+		
+		Ringtone ringtone = RingtoneManager.getRingtone(this, Uri.parse(alarma.getCancion()));
+		txtCancion.setText(ringtone.getTitle(this));
 
 		txtCancion.setOnClickListener(new OnClickListener() {
 
