@@ -40,7 +40,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 	
 	private String sqlInsertarDefecto = "INSERT INTO Config " +
 			"(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud) " + 
-			"VALUES (0, '','', 50 ,0 , 1, 1, 40.416615, -3.703827)";
+			"VALUES (0, '','content://media/internal/audio/media/126', 50 ,0 , 1, 1, 40.416615, -3.703827)";
 	
 	
 	@Override

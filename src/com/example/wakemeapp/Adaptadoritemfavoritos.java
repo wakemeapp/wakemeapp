@@ -2,6 +2,9 @@ package com.example.wakemeapp;
 
 import java.util.List;
 
+import android.media.Ringtone;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import clases.Alarma;
 import Persistencia.BDOperaciones;
 import android.app.Activity;
@@ -37,9 +40,11 @@ public class Adaptadoritemfavoritos extends BaseAdapter {
         
         TextView lblnombre = (TextView)item.findViewById(R.id.lblnombre);
         lblnombre.setText(al.getNombre());
- 
+        
+        Uri rutaCancion = Uri.parse(al.getCancion());
+        Ringtone ring = RingtoneManager.getRingtone(Adaptadoritemfavoritos.this.context, rutaCancion);
         TextView lblcancion = (TextView)item.findViewById(R.id.lblcancion);
-        lblcancion.setText(al.getCancion());
+        lblcancion.setText(ring.getTitle(Adaptadoritemfavoritos.this.context));
  
         TextView lbldistancia = (TextView)item.findViewById(R.id.lbldistancia);        
         lbldistancia.setText(Integer.toString(al.getDistancia()));

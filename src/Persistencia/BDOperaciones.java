@@ -263,7 +263,8 @@ public class BDOperaciones {
 				
 			    int id = getIdUltimaAlarma(c) + 1; 
 				String nombre = alarma.getNombre();
-				String cancion = alarma.getCancion();
+				String auxCancion = alarma.getCancion();
+				String cancion = auxCancion.replaceAll("'","\'");
 				int distancia = alarma.getDistancia();
 				int favorito = (alarma.isFavorito()) ? 1 : 0;
 				int activa = (alarma.isActiva()) ? 1 : 0;
@@ -313,7 +314,8 @@ public class BDOperaciones {
 				// Generamos los datos
 				int id = alarma.getId();
 				String nombre = alarma.getNombre();
-				String cancion = alarma.getCancion();
+				String auxCancion = alarma.getCancion();
+				String cancion = auxCancion.replaceAll("'","\'");
 				int distancia = alarma.getDistancia();
 				int favorito = (alarma.isFavorito()) ? 1 : 0;
 				int activa = (alarma.isActiva()) ? 1 : 0;
@@ -456,7 +458,8 @@ public class BDOperaciones {
 			// Generamos los datos
 			int id = alarma.getId();
 			String nombre = alarma.getNombre();
-			String cancion = alarma.getCancion();
+			String auxCancion = alarma.getCancion();
+			String cancion = auxCancion.replaceAll("'","\'");
 			int distancia = alarma.getDistancia();
 			int favorito = (alarma.isFavorito()) ? 1 : 0;
 			int activa = (alarma.isActiva()) ? 1 : 0;
@@ -498,7 +501,8 @@ public class BDOperaciones {
 			// Generamos los datos
 			int id = alarma.getId();
 			String nombre = alarma.getNombre();
-			String cancion = alarma.getCancion();
+			String auxCancion = alarma.getCancion();
+			String cancion = auxCancion.replaceAll("'","\'");
 			int distancia = alarma.getDistancia();
 			int favorito = (alarma.isFavorito()) ? 1 : 0;
 			int activa = (alarma.isActiva()) ? 1 : 0;
