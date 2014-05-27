@@ -1,5 +1,6 @@
 package com.example.wakemeapp;
 
+import java.io.File;
 import java.util.List;
 
 import clases.Alarma;
@@ -15,11 +16,13 @@ import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.provider.MediaStore;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.ProgressBar;
@@ -147,32 +150,38 @@ public class Bienvenida extends Activity {
 					double distancia = distancia(a, coordenadas);
 					if(distancia < a.getDistancia()) {
 						System.out.println("Está llegando a su destino. ¡¡Vaya cogiendo sus cosas!!");
-						//Notificar al usuario la proximidad al destino
-					if(!a.isNotificada()){
-						Notification notificacion = new Notification(
-								R.drawable.icono,
-								a.getNombre(),
-								System.currentTimeMillis() );
+						// Notificar al usuario la proximidad al destino
+						if (!bdo.isAlarmaNotificada(c, a.getId())) {
 
-						Uri cancion= Uri.parse("R.raw.cancion");// Uri.parse(a.getCancion());
-								//Uri.parse("R.raw.cancion");
-						notificacion.sound = cancion;
+							Notification notificacion = new Notification(
+									R.drawable.icono, a.getNombre(),
+									System.currentTimeMillis());
 
+							Uri cancion = Uri.parse(a.getCancion());
 
-						Context conte= Bienvenida.this.getApplicationContext();
-						RingtoneManager.setActualDefaultRingtoneUri(c,RingtoneManager.TYPE_RINGTONE,cancion);
-						Intent i = new Intent(Bienvenida.this, Principal.class);
-						PendingIntent pi =PendingIntent.getActivity(Bienvenida.this.getApplicationContext(), 0, i, 0);
+							RingtoneManager.setActualDefaultRingtoneUri(c, 4, cancion);
+							
+							notificacion.sound = cancion;
+							
+							System.out.println("la cancion es"+cancion);
 
-						
-						RingtoneManager.setActualDefaultRingtoneUri(c,RingtoneManager.TYPE_RINGTONE,cancion);
+							Intent i = new Intent(Bienvenida.this,Principal.class);
+							PendingIntent pi = PendingIntent.getActivity(Bienvenida.this.getApplicationContext(), 0,i, 0);
 
-						notificacion.setLatestEventInfo(Bienvenida.this.getApplicationContext(),"WakeMeApp", a.getDistancia() + " metros hasta " +a.getNombre(),pi);
-						nm.notify(ID_NOTIFICACION_CREAR, notificacion);
-						
-						System.out.println("La notificacion está en "+ a.isNotificada());
-						a.setNotificada(true);
-						startActivity(i);
+							notificacion.setLatestEventInfo(
+									Bienvenida.this.getApplicationContext(),
+									"WakeMeApp", a.getDistancia()
+											+ " metros hasta " + a.getNombre(),
+									pi);
+							nm.notify(ID_NOTIFICACION_CREAR, notificacion);
+
+							System.out.println("La notificacion está en "
+									+ a.isNotificada());
+							bdo.modificarNotificada(c, a.getId(), true);
+							System.out
+									.println("Estoy dentro del if y no debería");
+
+							startActivity(i);
 					}
 
 					}
