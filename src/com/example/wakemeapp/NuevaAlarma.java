@@ -76,7 +76,7 @@ public class NuevaAlarma extends Activity {
 				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TYPE,
 						RingtoneManager.TYPE_RINGTONE);
 				intent.putExtra(RingtoneManager.EXTRA_RINGTONE_TITLE,
-						"Select Ringtone");
+						"Seleccione un tono");
 
 				// for existing ringtone
 				Uri urie = RingtoneManager.getActualDefaultRingtoneUri(
