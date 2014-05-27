@@ -4,6 +4,7 @@ import clases.Alarma;
 import Persistencia.BDOperaciones;
 import android.app.Activity;
 import android.content.Intent;
+import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -43,7 +44,8 @@ public class ConfiguracionDefecto extends Activity{
 		alarma = bd.getAlarmasPredeterminadas(getApplicationContext()).get(0);
 		
 		txtCancion = (TextView)findViewById(R.id.txtCancion);
-		txtCancion.setText(alarma.getCancion());
+		Ringtone ringtone = RingtoneManager.getRingtone(this, Uri.parse(alarma.getCancion()));
+		txtCancion.setText(ringtone.getTitle(this));
 		
 		skbDistancia = (SeekBar)findViewById(R.id.skbDistancia);
 		skbDistancia.setProgress(alarma.getDistancia());
@@ -56,10 +58,6 @@ public class ConfiguracionDefecto extends Activity{
   	 	
 		tbnFavoritos = (ToggleButton)findViewById(R.id.tbnFavoritos);
 	   	tbnFavoritos.setChecked(alarma.isFavorito());   
-	   	
-	   	
-	   	txtCancion = (TextView)findViewById(R.id.txtCancion);
-	   	 txtCancion.setText(alarma.getCancion());
 	   	 
 	   	 txtCancion.setOnClickListener(new OnClickListener() {
 			
