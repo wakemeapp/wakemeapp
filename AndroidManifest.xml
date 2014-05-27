@@ -116,7 +116,7 @@
         </activity>
 		<activity
             android:name="com.example.wakemeapp.ConfiguracionDefecto"
-            android:label="@string/settings"
+            android:label="@string/config"
             android:screenOrientation="portrait"
 			android:configChanges="keyboardHidden|orientation|screenSize">            
         </activity>

@@ -3,8 +3,6 @@ package com.example.wakemeapp;
 import java.util.List;
 
 import clases.Alarma;
-import clases.Comprobar;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
@@ -16,13 +14,9 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.gson.Gson;
-
-import Persistencia.BDOperaciones;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,16 +24,12 @@ import android.widget.Button;
 import android.widget.Toast;
 
 
-/**
- * This shows how to draw circles on a map.
- */
 public class Mapa extends FragmentActivity 
 		implements OnMapClickListener, OnMarkerDragListener {
     private LatLng ubicacion = new LatLng(40.416615, -3.703827);
     private double distancia = 1000;
     
     private GoogleMap mMap;
-    //comentario
     private DraggableCircle dc;
 
     int color = 0;
@@ -53,7 +43,8 @@ public class Mapa extends FragmentActivity
     
     @Override
 	public void onBackPressed() {		
-		Intent intent = new Intent(Mapa.this, NuevaAlarma.class);
+    	Intent intent = new Intent(Mapa.this, NuevaAlarma.class);
+        intent.putExtra("Alarma", new Gson().toJson(alarma));
         startActivity(intent);
 	}
 
@@ -120,9 +111,6 @@ public class Mapa extends FragmentActivity
                  startActivity(intent);
              }
         });
-        
-        
-        
     }
 
     @Override
@@ -132,12 +120,9 @@ public class Mapa extends FragmentActivity
     }
 
     private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the map.
         if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
             mMap = ((SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map))
                     .getMap();
-            // Check if we were successful in obtaining the map.
             if (mMap != null) {
                 setUpMap();
             }
@@ -154,7 +139,6 @@ public class Mapa extends FragmentActivity
         DraggableCircle circle = new DraggableCircle(ubicacion, distancia);
         dc = circle;
 
-        // Move the map so that it is centered on the initial circle
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(ubicacion, 10.0f));
     }
 
@@ -189,35 +173,5 @@ public class Mapa extends FragmentActivity
 		Toast toast = Toast.makeText(this, "Posicion: " + point.toString(), Toast.LENGTH_LONG);
 	    toast.show();	
 		
-	}
-    /*
-    private Handler handler = new Handler();
-	private Runnable runnable = new Runnable() 
-	{
-
-	    public void run() 
-	    {
-	    	//codigo que se ejecutara periodicamente
-	    	//INICIO
-	    	System.out.println("HOLA");
-
-	    	Context c = getApplicationContext();
-	    	
-	    	
-	    	BDOperaciones bdo = new BDOperaciones();
-	    	List<Alarma> lalarma = bdo.getAlarmasActivas(c);
-	    	for(Alarma a : lalarma){
-	    		System.out.println("---" + a.getNombre());
-	    	}
-	    	
-	    	
-	    	
-	    	//FIN
-	    	
-	    	
-	    	
-	        handler.postDelayed(this, 5000);
-	    }
-	};
-	*/
+	}    
 }

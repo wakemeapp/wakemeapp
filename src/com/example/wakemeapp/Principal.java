@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -66,35 +67,6 @@ public class Principal extends Activity {
                   startActivity(intent);
              }
         });
-
-        /*
-        Button btnluis = (Button)findViewById(R.id.btnluis);
-        btnluis.setOnClickListener(new OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                  Intent intent = new Intent(Principal.this, Luis.class);
-                  startActivity(intent);
-             }
-        });        
-        
-        Button btnmanuel = (Button)findViewById(R.id.btnmanuel);
-        btnmanuel.setOnClickListener(new OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                  Intent intent = new Intent(Principal.this, Manuel.class);
-                  startActivity(intent);
-             }
-        });
-        
-        Button btnvictor = (Button)findViewById(R.id.btnvictor);
-        btnvictor.setOnClickListener(new OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                  Intent intent = new Intent(Principal.this, Victor.class);
-                  startActivity(intent);
-             }
-        });
-        */
         
         ImageButton btnconfig = (ImageButton)findViewById(R.id.btnconfig);
         btnconfig.setOnClickListener(new OnClickListener() {
@@ -109,9 +81,19 @@ public class Principal extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    switch (item.getItemId()) {
+	        case R.id.config:
+	        	Intent intent = new Intent(Principal.this, ConfiguracionDefecto.class);
+                startActivity(intent);
+	            return true;	        
+	    }
+		return false;
 	}
 	
 	private void banner(){
@@ -132,7 +114,7 @@ public class Principal extends Activity {
 	    	builder.setIcon(R.drawable.banner4);
 	        break;	    
 	    }	    
-	    builder.setTitle("Incoming Call");
+	    builder.setTitle("Publicidad");
 	    builder.setInverseBackgroundForced(true);
 	    builder.setPositiveButton("Aceptar",new DialogInterface.OnClickListener()
 	    {

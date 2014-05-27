@@ -19,10 +19,6 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
-
-
-
-
 public class Adaptadoritemfavoritos extends BaseAdapter {	
 	 
     private Activity context;
