@@ -170,7 +170,7 @@ public class NuevaAlarma extends Activity {
 			public void onClick(View v) {
 				getparametros();
 
-				Intent intent = new Intent(NuevaAlarma.this, Manuel.class);
+				Intent intent = new Intent(NuevaAlarma.this, Mapa.class);
 				intent.putExtra("Alarma", new Gson().toJson(alarma));
 				startActivity(intent);
 			}

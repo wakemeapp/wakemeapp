@@ -29,5 +29,6 @@
     <string name="crearAlarma">Crear Alarma</string>
     <string name="verActivas">Alarmas Activas</string>
     <string name="settings">Ajustes</string>
+    <string name="mapa">Seleccion de destino</string>
 	
 </resources>

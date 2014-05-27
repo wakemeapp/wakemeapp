@@ -2,7 +2,7 @@ package clases;
 
 import java.util.List;
 
-import com.example.wakemeapp.Manuel;
+import com.example.wakemeapp.Mapa;
 
 import Persistencia.BDOperaciones;
 import android.app.Activity;
@@ -21,7 +21,7 @@ public class Comprobar extends Activity{
 	    	System.out.println("HOLA");
 
 	    	Context c = getApplicationContext();
-	    	Manuel m = new Manuel();
+	    	Mapa m = new Mapa();
 	    	m.getApplicationContext();
 	    	Context c1 = m.getApplicationContext();
 	    	BDOperaciones bdo = new BDOperaciones();

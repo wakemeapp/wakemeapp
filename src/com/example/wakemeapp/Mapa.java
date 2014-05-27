@@ -33,7 +33,7 @@ import android.widget.Toast;
 /**
  * This shows how to draw circles on a map.
  */
-public class Manuel extends FragmentActivity 
+public class Mapa extends FragmentActivity 
 		implements OnMapClickListener, OnMarkerDragListener {
     private LatLng ubicacion = new LatLng(40.416615, -3.703827);
     private double distancia = 1000;
@@ -53,7 +53,7 @@ public class Manuel extends FragmentActivity
     
     @Override
 	public void onBackPressed() {		
-		Intent intent = new Intent(Manuel.this, NuevaAlarma.class);
+		Intent intent = new Intent(Mapa.this, NuevaAlarma.class);
         startActivity(intent);
 	}
 
@@ -86,7 +86,7 @@ public class Manuel extends FragmentActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.manuel);
+        setContentView(R.layout.mapa);
         
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -102,7 +102,7 @@ public class Manuel extends FragmentActivity
 		btnAtras.setOnClickListener(new OnClickListener() {
              @Override
              public void onClick(View v) {
-                  Intent intent = new Intent(Manuel.this, NuevaAlarma.class);
+                  Intent intent = new Intent(Mapa.this, NuevaAlarma.class);
                   intent.putExtra("Alarma", new Gson().toJson(alarma));
                   startActivity(intent);
              }
@@ -115,7 +115,7 @@ public class Manuel extends FragmentActivity
             	 alarma.setLatitud((float)dc.centerMarker.getPosition().latitude);
             	 alarma.setLongitud((float)dc.centerMarker.getPosition().longitude);
             	 
-            	 Intent intent = new Intent(Manuel.this, NuevaAlarma.class);
+            	 Intent intent = new Intent(Mapa.this, NuevaAlarma.class);
                  intent.putExtra("Alarma", new Gson().toJson(alarma));
                  startActivity(intent);
              }
