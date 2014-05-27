@@ -26,7 +26,10 @@ public class Principal extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.principal);
 		
-		banner();
+		Bundle bundle = this.getIntent().getExtras();
+		if (bundle != null) {
+			if(bundle.getBoolean("Publi", false)) banner();
+		}
 		
 		Button btnnuevaalarma = (Button)findViewById(R.id.button1);
         btnnuevaalarma.setOnClickListener(new OnClickListener() {

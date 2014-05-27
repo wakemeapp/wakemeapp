@@ -171,6 +171,10 @@ public class Bienvenida extends Activity {
 							System.out.println("la cancion es"+cancion);
 
 							Intent i = new Intent(Bienvenida.this,Principal.class);
+							Bundle b = new Bundle();
+			                b.putBoolean("Publi", true);
+			                i.putExtras(b);
+			                
 							PendingIntent pi = PendingIntent.getActivity(Bienvenida.this.getApplicationContext(), 0,i, 0);
 
 							notificacion.setLatestEventInfo(
