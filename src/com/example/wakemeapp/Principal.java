@@ -117,10 +117,24 @@ public class Principal extends Activity {
 	private void banner(){
 		AlertDialog.Builder builder=new AlertDialog.Builder(Principal.this);
 	    builder.setCancelable(true);
-	    builder.setIcon(R.drawable.nosotros);
+	    int rand = (int) Math.random() * 4;
+	    switch(rand) {
+	    case 1: 
+	    	builder.setIcon(R.drawable.banner1);
+	        break;
+	    case 2: 
+	    	builder.setIcon(R.drawable.banner2);
+	        break;
+	    case 3: 
+	    	builder.setIcon(R.drawable.banner3);
+	        break;
+	    case 4: 
+	    	builder.setIcon(R.drawable.banner4);
+	        break;	    
+	    }	    
 	    builder.setTitle("Incoming Call");
 	    builder.setInverseBackgroundForced(true);
-	    builder.setPositiveButton("Accept",new DialogInterface.OnClickListener()
+	    builder.setPositiveButton("Aceptar",new DialogInterface.OnClickListener()
 	    {
 	        @Override
 	        public void onClick(DialogInterface dialog, int which) 

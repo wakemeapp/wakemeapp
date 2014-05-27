@@ -38,18 +38,18 @@
             android:value="AIzaSyBK_6t7pU3te1631vxnyTYM9kjbbjj0t3A"/>-->
             
             
-		 <!-- Manu  <meta-data 
+		 <!-- Manu --> <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/> -->
+            android:value="AIzaSyDW7SukclUBif3RZFAXKeBsl222cprLHvk"/> 
 		
 
         <!--VICTOR <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
 			android:value="AIzaSyChYiSxAhZ6dD6B3oJqQwuA0f8q-fnz18M"/> -->
         
-        <!-- LUIS --><meta-data 
+        <!-- LUIS <meta-data 
             android:name="com.google.android.maps.v2.API_KEY"
-			android:value="AIzaSyBCwJCLPq8VTE2_xKBxkPR9IxR1uetTTxI"/>
+			android:value="AIzaSyBCwJCLPq8VTE2_xKBxkPR9IxR1uetTTxI"/> -->
         
         
         <meta-data
