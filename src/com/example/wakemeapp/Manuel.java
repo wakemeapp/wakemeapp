@@ -50,6 +50,12 @@ public class Manuel extends FragmentActivity
     private int mFillColor;
     
     private Alarma alarma = new Alarma();
+    
+    @Override
+	public void onBackPressed() {		
+		Intent intent = new Intent(Manuel.this, NuevaAlarma.class);
+        startActivity(intent);
+	}
 
     private class DraggableCircle {
         private final Marker centerMarker;

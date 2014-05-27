@@ -32,6 +32,12 @@ public class NuevaAlarma extends Activity {
 	private int stepSize = 5;
 	
 	@Override
+	public void onBackPressed() {		
+		Intent intent = new Intent(NuevaAlarma.this, Principal.class);
+        startActivity(intent);
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.nuevaalarma);

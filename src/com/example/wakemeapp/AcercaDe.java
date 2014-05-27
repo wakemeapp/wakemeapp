@@ -11,6 +11,12 @@ import android.widget.Button;
 public class AcercaDe extends Activity{
 	
 	@Override
+	public void onBackPressed() {		
+		Intent intent = new Intent(AcercaDe.this, Principal.class);
+        startActivity(intent);
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.acercade);

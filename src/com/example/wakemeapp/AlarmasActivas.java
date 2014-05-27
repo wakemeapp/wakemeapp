@@ -16,6 +16,11 @@ import android.widget.ListView;
 
 public class AlarmasActivas extends Activity {
 
+	@Override
+	public void onBackPressed() {		
+		Intent intent = new Intent(AlarmasActivas.this, Principal.class);
+        startActivity(intent);
+	}
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

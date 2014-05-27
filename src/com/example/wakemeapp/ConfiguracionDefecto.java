@@ -29,6 +29,12 @@ public class ConfiguracionDefecto extends Activity{
 	private int stepSize = 5;
 	
 	@Override
+	public void onBackPressed() {		
+		Intent intent = new Intent(ConfiguracionDefecto.this, Principal.class);
+        startActivity(intent);
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.configuraciondefecto);

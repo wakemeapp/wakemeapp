@@ -17,6 +17,12 @@ import android.widget.ListView;
 public class Favoritos extends Activity {
 
 	@Override
+	public void onBackPressed() {		
+		Intent intent = new Intent(Favoritos.this, Principal.class);
+        startActivity(intent);
+	}
+	
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.favoritos);
