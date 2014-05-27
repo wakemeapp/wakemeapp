@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.Toast;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -140,19 +141,26 @@ public class NuevaAlarma extends Activity {
 		btnCrear.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				getparametros();
+				
+				if(txtNombre.getText().toString().compareTo("") == 0 || txtCancion.getText().toString().compareTo("") == 0 || (!tbnActivar.isChecked() && !tbnFavoritos.isChecked())) {
+					System.out.println("Error VALIDACION");
+					Toast toast = Toast.makeText(getApplicationContext(),"La configuración es incorrecta. Revise los campos.", Toast.LENGTH_LONG);
+				    toast.show();
+				} else {
+					System.out.println("BUENA VALIDACION");
+					getparametros();
+					BDOperaciones bd = new BDOperaciones();
+					bd.insertarAlarma(NuevaAlarma.this.getApplicationContext(),
+							alarma);
 
-				BDOperaciones bd = new BDOperaciones();
-				bd.insertarAlarma(NuevaAlarma.this.getApplicationContext(),
-						alarma);
+					// System.out.println("Mi alarma es: " + alarma.getId() + " " +
+					// alarma.getNombre() + " " + alarma.getCancion() + " " +
+					// alarma.getDistancia() + " " + alarma.isFavorito() + " " +
+					// alarma.isActiva());
 
-				// System.out.println("Mi alarma es: " + alarma.getId() + " " +
-				// alarma.getNombre() + " " + alarma.getCancion() + " " +
-				// alarma.getDistancia() + " " + alarma.isFavorito() + " " +
-				// alarma.isActiva());
-
-				Intent intent = new Intent(NuevaAlarma.this, Principal.class);
-				startActivity(intent);
+					Intent intent = new Intent(NuevaAlarma.this, Principal.class);
+					startActivity(intent);
+				}
 			}
 		});
 
