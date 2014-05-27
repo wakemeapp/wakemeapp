@@ -199,7 +199,7 @@ public class Bienvenida extends Activity {
 
 			//FIN
 
-			handler.postDelayed(this, 5000);
+			handler.postDelayed(this, 15000);
 		}
 	};
 
