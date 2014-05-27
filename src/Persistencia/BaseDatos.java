@@ -23,6 +23,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 			"repetir INTEGER, " +
 			"latitud REAL, " +
 			"longitud REAL" +
+			"notificada INTEGER" +
 			");";
 	
 	private String sqlConfig = "CREATE TABLE Config (" +

@@ -270,13 +270,14 @@ public class BDOperaciones {
 				int repetir= alarma.getRepetir();
 				float latitud = alarma.getLatitud();
 				float longitud = alarma.getLongitud();
+				int notificada = 0; //Inicio siempre Notificada a 0 (false)
 				
 				try{
 				    // Insertamos los datos en la tabla Alarmas
 					db.execSQL("INSERT INTO Alarmas " +
 							"(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud) " + 
 							"VALUES (" + id + ", '" + nombre + "','" + cancion + "'" +
-									"," + distancia +","+ favorito + "," + activa + ",'"+repetir+"',"+latitud+","+ longitud +")");
+									"," + distancia +","+ favorito + "," + activa + ",'"+repetir+"',"+latitud+","+ longitud +","+ notificada +")");
 					
 				}catch(SQLException e)
 				{
@@ -462,14 +463,14 @@ public class BDOperaciones {
 			int repetir= alarma.getRepetir();
 			float latitud = alarma.getLatitud();
 			float longitud = alarma.getLongitud();
-			
+			int notificada = 0;  //Inicio siempre Notificada a 0 (false)
 		
 			// Modificamos los datos con el id que te pasan por los nuevos datos
 			// contenidos en la clase Alarma que te pasan
 			db.execSQL("UPDATE Alarmas " +
 					   "SET id=" + id + ", nombre='" + nombre + "', cancion='" + cancion + "'" +
 							", distancia=" + distancia +", favorito="+ favorito + ", activa=" + activa +
-							", repetir='" + repetir +"', latitud= "+latitud+", longitud="+ longitud +
+							", repetir='" + repetir +"', latitud= "+latitud+", longitud="+ longitud +", notificada="+ notificada +
 					   " WHERE id=" + idparametro );
 			
 			// Cerramos la base de datos
@@ -553,6 +554,34 @@ public class BDOperaciones {
 	}
 	
 	//Modifica el estado de la alarma que coincida con el ID pasado como parámetro
+	//asignándole al campo "Notificada" el valor pasado como parámetro (noti)
+	public void modificarNotificada(Context c, int idparametro, boolean noti)
+	{
+		// Abrimos la base de datos ‘BDAlarmas’ en modo escritura
+		BaseDatos usdbh = new BaseDatos(c, "BDAlarmas", null, 1);
+		SQLiteDatabase db = usdbh.getWritableDatabase();
+		
+		// Si hemos abierto correctamente la base de datos
+		if (db != null) {
+				
+			// Generamos los datos
+			int notificada = (noti==true) ? 1 : 0;
+					
+			// Modificamos el id que te pasan para que cambia su estado favorito
+			db.execSQL("UPDATE Alarmas " +
+					   "SET notificada="+ notificada +
+					   " WHERE id=" + idparametro );
+			
+			// Cerramos la base de datos
+			db.close();
+		}
+		else
+		{
+			System.out.println("Error al abrir la base de datos");
+		}		
+	}
+	
+	//Modifica el estado de la alarma que coincida con el ID pasado como parámetro
 	//asignándole al campo "Activa" el valor pasado como parámetro (act)
 	public void modificarActiva(Context c, int idparametro, boolean act)
 	{
@@ -578,6 +607,51 @@ public class BDOperaciones {
 		{
 			System.out.println("Error al abrir la base de datos");
 		}			
+	}
+	
+	//Devuelve el campo Notificada de la alarma que coincida con el ID pasado como parámetro
+	public boolean isAlarmaNotificada (Context c, int idparametro)
+	{
+		boolean resultado=false;
+		
+		// Abrimos la base de datos ‘BDAlarmas’ en modo lectura
+		BaseDatos usdbh = new BaseDatos(c, "BDAlarmas", null, 1);
+		SQLiteDatabase db = usdbh.getReadableDatabase();
+
+		// Si hemos abierto correctamente la base de datos
+		if (db != null) {
+				
+				// Cogemos el campo Notificada de la alarma con ese id
+				Cursor cursor = db.rawQuery(" SELECT notificada FROM Alarmas WHERE id=" + idparametro, null);
+				
+				//Nos aseguramos de que existe al menos un registro
+				if (cursor.moveToFirst()) {
+					
+					if(cursor.getInt(0) == 0)
+					{
+						resultado=false;
+					}
+					else
+					{
+						resultado=true;
+					}
+										
+				}
+				else
+				{
+					System.out.println("La consulta no ha devuelto registros");
+				}
+				
+			// Cerramos la base de datos
+			db.close();
+
+		}
+		else
+		{
+			System.out.println("Error al abrir la base de datos");
+		}
+		
+		return resultado;
 	}
 	
 	//Devuelve todas las alarmas que esten activas de la tabla Alarmas
