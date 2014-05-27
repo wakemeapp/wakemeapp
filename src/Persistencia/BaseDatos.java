@@ -22,7 +22,7 @@ public class BaseDatos extends SQLiteOpenHelper {
 			"activa INTEGER, " +
 			"repetir INTEGER, " +
 			"latitud REAL, " +
-			"longitud REAL" +
+			"longitud REAL," +
 			"notificada INTEGER" +
 			");";
 	

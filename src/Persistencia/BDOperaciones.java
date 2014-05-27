@@ -275,7 +275,7 @@ public class BDOperaciones {
 				try{
 				    // Insertamos los datos en la tabla Alarmas
 					db.execSQL("INSERT INTO Alarmas " +
-							"(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud) " + 
+							"(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud, notificada) " + 
 							"VALUES (" + id + ", '" + nombre + "','" + cancion + "'" +
 									"," + distancia +","+ favorito + "," + activa + ",'"+repetir+"',"+latitud+","+ longitud +","+ notificada +")");
 					
@@ -682,6 +682,7 @@ public class BDOperaciones {
 					int repetir;
 					float latitud; 
 					float longitud;
+					boolean notificada;
 					
 					//Recorremos el cursor hasta que no haya más registros
 					do {
@@ -694,9 +695,11 @@ public class BDOperaciones {
 						repetir= cursor.getInt(6);
 						latitud = cursor.getFloat(7);
 						longitud = cursor.getFloat(8);
+						notificada = (cursor.getInt(9)==1) ? true : false;
 						
 						//Creo una alarma con los datos obtenidos de la consulta
 						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud);
+						alarma.setNotificada(notificada);
 						
 						//Añado la alarma creada a la lista
 						listaActivas.add(alarma);	
@@ -749,6 +752,7 @@ public class BDOperaciones {
 					int repetir;
 					float latitud; 
 					float longitud;
+					boolean notificada;
 					
 					//Recorremos el cursor hasta que no haya más registros
 					do {
@@ -761,10 +765,11 @@ public class BDOperaciones {
 						repetir= cursor.getInt(6);
 						latitud = cursor.getFloat(7);
 						longitud = cursor.getFloat(8);
+						notificada = (cursor.getInt(9)==1) ? true : false;
 						
 						//Creo una alarma con los datos obtenidos de la consulta
 						Alarma alarma = new Alarma(id, nombre, cancion, distancia, favorito, activa, repetir, latitud, longitud);
-						
+						alarma.setNotificada(notificada);
 						//Añado la alarma creada a la lista
 						listaFavoritas.add(alarma);	
 						
